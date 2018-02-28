@@ -4,6 +4,12 @@
 	<groupId>com.projet.infotel</groupId>
 	<artifactId>dao</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	 <parent>
+    <groupId>com.formation.projet</groupId>
+    <artifactId>Projet-Infotel</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
