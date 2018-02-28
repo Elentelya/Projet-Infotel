@@ -8,11 +8,6 @@
 
 	<modules>
 		<module>projet_dao</module>
-		<module>projet_dao2</module>
-	</modules>
-	
-	<modules>
-		<module>projet_dao</module>
 	</modules>
 
 	<dependencies>
@@ -25,6 +20,5 @@
 		</dependency>
 
 	</dependencies>
-	
 </project>
 
