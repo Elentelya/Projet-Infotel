@@ -34,10 +34,10 @@ public class Book implements java.io.Serializable {
 	private boolean popularBook;
 	
 	@ManyToOne
-	private int bookCategory;
+	private Category bookCategory;
 	
 	@ManyToOne
-	private int bookEditor;
+	private Editor bookEditor;
 	
 	@OneToMany(mappedBy="bookCopyBook")
 	private List<BookCopy> bookCopys;
@@ -54,7 +54,7 @@ public class Book implements java.io.Serializable {
 	}
 
 	public Book(String title, String description, double price, Date publicationDate, String imagePath,
-			boolean popularBook, int bookCategory, int bookEditor, List<Author> bookAuthors) {
+			boolean popularBook, Category bookCategory, Editor bookEditor, List<Author> bookAuthors) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -120,19 +120,19 @@ public class Book implements java.io.Serializable {
 		this.popularBook = popularBook;
 	}
 
-	public int getBookCategory() {
+	public Category getBookCategory() {
 		return bookCategory;
 	}
 
-	public void setBookCategory(int bookCategory) {
+	public void setBookCategory(Category bookCategory) {
 		this.bookCategory = bookCategory;
 	}
 
-	public int getBookEditor() {
+	public Editor getBookEditor() {
 		return bookEditor;
 	}
 
-	public void setBookEditor(int bookEditor) {
+	public void setBookEditor(Editor bookEditor) {
 		this.bookEditor = bookEditor;
 	}
 

@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class Address implements java.io.Serializable {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "address_id")
 	private int addressId;
 	private String street;
@@ -19,13 +19,13 @@ public class Address implements java.io.Serializable {
 	private City addressCity;
 	
 	@OneToOne(mappedBy="editorAddress")
-	private Address addressEditor;
+	private Editor addressEditor;
 	
 	@OneToOne(mappedBy="libraryAddress")
-	private Address addressLibrary;
+	private Library addressLibrary;
 	
 	@OneToOne(mappedBy="memberAddress")
-	private Address addressMember;
+	private Member addressMember;
 
 	public Address() {
 		super();
@@ -33,15 +33,28 @@ public class Address implements java.io.Serializable {
 	}
 
 
-	public Address(String street, String complement, City addressCity, Address addressEditor, Address addressLibrary,
-			Address addressMember) {
+	public Address(String street, String complement, City addressCity, Member addressMember) {
+		super();
+		this.street = street;
+		this.complement = complement;
+		this.addressCity = addressCity;
+		this.addressMember = addressMember;
+	}
+
+	public Address(String street, String complement, City addressCity, Editor addressEditor) {
 		super();
 		this.street = street;
 		this.complement = complement;
 		this.addressCity = addressCity;
 		this.addressEditor = addressEditor;
+	}
+
+	public Address(String street, String complement, City addressCity, Library addressLibrary) {
+		super();
+		this.street = street;
+		this.complement = complement;
+		this.addressCity = addressCity;
 		this.addressLibrary = addressLibrary;
-		this.addressMember = addressMember;
 	}
 
 
@@ -72,32 +85,32 @@ public class Address implements java.io.Serializable {
 	}
 
 
-	public Address getAddressEditor() {
+	public Editor getAddressEditor() {
 		return addressEditor;
 	}
 
 
-	public void setAddressEditor(Address addressEditor) {
+	public void setAddressEditor(Editor addressEditor) {
 		this.addressEditor = addressEditor;
 	}
 
 
-	public Address getAddressLibrary() {
+	public Library getAddressLibrary() {
 		return addressLibrary;
 	}
 
 
-	public void setAddressLibrary(Address addressLibrary) {
+	public void setAddressLibrary(Library addressLibrary) {
 		this.addressLibrary = addressLibrary;
 	}
 
 
-	public Address getAddressMember() {
+	public Member getAddressMember() {
 		return addressMember;
 	}
 
 
-	public void setAddressMember(Address addressMember) {
+	public void setAddressMember(Member addressMember) {
 		this.addressMember = addressMember;
 	}
 

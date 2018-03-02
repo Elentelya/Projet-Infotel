@@ -24,12 +24,12 @@ public class Borrow implements java.io.Serializable {
 	private Date returnDate;
 	
 	@ManyToOne
-	private int borrowCopyBook;
+	private BookCopy borrowCopyBook;
 	
 	@ManyToOne
-	private int borrowBasket;
+	private Basket borrowBasket;
 
-	public Borrow(Date borrowDate, Date returnDate, int borrowCopyBook, int borrowBasket) {
+	public Borrow(Date borrowDate, Date returnDate, BookCopy borrowCopyBook, Basket borrowBasket) {
 		super();
 		this.borrowDate = borrowDate;
 		this.returnDate = returnDate;
@@ -68,22 +68,22 @@ public class Borrow implements java.io.Serializable {
 	}
 
 
-	public int getBorrowCopyBook() {
+	public BookCopy getBorrowCopyBook() {
 		return borrowCopyBook;
 	}
 
 
-	public void setBorrowCopyBook(int borrowCopyBook) {
+	public void setBorrowCopyBook(BookCopy borrowCopyBook) {
 		this.borrowCopyBook = borrowCopyBook;
 	}
 
 
-	public int getBorrowBasket() {
+	public Basket getBorrowBasket() {
 		return borrowBasket;
 	}
 
 
-	public void setBorrowBasket(int borrowBasket) {
+	public void setBorrowBasket(Basket borrowBasket) {
 		this.borrowBasket = borrowBasket;
 	}
 

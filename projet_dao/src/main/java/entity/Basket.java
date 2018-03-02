@@ -25,12 +25,12 @@ public class Basket implements java.io.Serializable {
 	private Date deliveryDate;
 	
 	@ManyToOne
-	private int basketMember;
+	private Member basketMember;
 	
 	@OneToMany(mappedBy="borrowBasket")
 	private List<Borrow> basketBorrows;
 
-	public Basket(Date creationDate, Date deliveryDate, int basketMember) {
+	public Basket(Date creationDate, Date deliveryDate, Member basketMember) {
 		super();
 		this.creationDate = creationDate;
 		this.deliveryDate = deliveryDate;
@@ -68,12 +68,12 @@ public class Basket implements java.io.Serializable {
 	}
 
 
-	public int getBasketMember() {
+	public Member getBasketMember() {
 		return basketMember;
 	}
 
 
-	public void setBasketMember(int basketMember) {
+	public void setBasketMember(Member basketMember) {
 		this.basketMember = basketMember;
 	}
 

@@ -22,15 +22,15 @@ public class BookCopy implements java.io.Serializable {
 	private String state;
 	
 	@ManyToOne
-	private int bookCopyBook;
+	private Book bookCopyBook;
 	
 	@ManyToOne
-	private int bookCopyLibrary;
+	private Library bookCopyLibrary;
 	
 	@OneToMany(mappedBy="borrowCopyBook")
 	private List<Borrow> copyBookBorrows;
 
-	public BookCopy(String state, int bookCopyBook, int bookCopyLibrary) {
+	public BookCopy(String state, Book bookCopyBook, Library bookCopyLibrary) {
 		super();
 		this.state = state;
 		this.bookCopyBook = bookCopyBook;
@@ -53,19 +53,19 @@ public class BookCopy implements java.io.Serializable {
 		this.state = state;
 	}
 
-	public int getBookCopyBook() {
+	public Book getBookCopyBook() {
 		return bookCopyBook;
 	}
 
-	public void setBookCopyBook(int bookCopyBook) {
+	public void setBookCopyBook(Book bookCopyBook) {
 		this.bookCopyBook = bookCopyBook;
 	}
 
-	public int getBookCopyLibrary() {
+	public Library getBookCopyLibrary() {
 		return bookCopyLibrary;
 	}
 
-	public void setBookCopyLibrary(int bookCopyLibrary) {
+	public void setBookCopyLibrary(Library bookCopyLibrary) {
 		this.bookCopyLibrary = bookCopyLibrary;
 	}
 
