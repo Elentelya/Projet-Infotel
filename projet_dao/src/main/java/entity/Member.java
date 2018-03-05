@@ -26,6 +26,7 @@ public class Member implements java.io.Serializable {
 	private String email;
 	private String password;
 	private String phone;
+	private boolean admin;
 	
 	@OneToMany(mappedBy="basketMember")
 	private List<Basket> memberBaskets;
@@ -38,7 +39,7 @@ public class Member implements java.io.Serializable {
 	private List<Registration> memberRegistrations;
 
 	public Member(String firstname, String lastname, String email, String password, String phone,
-			Address memberAddress) {
+			Address memberAddress, boolean admin) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -46,10 +47,19 @@ public class Member implements java.io.Serializable {
 		this.password = password;
 		this.phone = phone;
 		this.memberAddress = memberAddress;
+		this.admin = admin;
 	}
 
 	public Member() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 	public int getMemberId() {

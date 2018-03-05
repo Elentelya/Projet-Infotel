@@ -20,6 +20,7 @@ public class BookCopy implements java.io.Serializable {
 	@Column(name = "bookcopy_id")
 	private int bookCopyId;
 	private String state;
+	private boolean available;
 	
 	@ManyToOne
 	private Book bookCopyBook;
@@ -30,15 +31,24 @@ public class BookCopy implements java.io.Serializable {
 	@OneToMany(mappedBy="borrowCopyBook")
 	private List<Borrow> copyBookBorrows;
 
-	public BookCopy(String state, Book bookCopyBook, Library bookCopyLibrary) {
+	public BookCopy(String state, Book bookCopyBook, Library bookCopyLibrary, boolean available) {
 		super();
 		this.state = state;
 		this.bookCopyBook = bookCopyBook;
 		this.bookCopyLibrary = bookCopyLibrary;
+		this.available = available;
 	}
 
 	public BookCopy() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public boolean isAvailable() {
+		return available;
+	}
+
+	public void setAvailable(boolean available) {
+		this.available = available;
 	}
 
 	public int getBookCopyId() {
