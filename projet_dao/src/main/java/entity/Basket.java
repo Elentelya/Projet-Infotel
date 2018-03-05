@@ -23,6 +23,7 @@ public class Basket implements java.io.Serializable {
 	
 	private Date creationDate;
 	private Date deliveryDate;
+	private int status;
 	
 	@ManyToOne
 	private Member basketMember;
@@ -30,16 +31,27 @@ public class Basket implements java.io.Serializable {
 	@OneToMany(mappedBy="borrowBasket")
 	private List<Borrow> basketBorrows;
 
-	public Basket(Date creationDate, Date deliveryDate, Member basketMember) {
+	public Basket(Date creationDate, Date deliveryDate, Member basketMember, int status) {
 		super();
 		this.creationDate = creationDate;
 		this.deliveryDate = deliveryDate;
 		this.basketMember = basketMember;
+		this.status = status;
 	}
 
 
 	public Basket() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 
