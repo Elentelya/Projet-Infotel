@@ -1,0 +1,13 @@
+entity\Editor.class
+entity\Author.class
+entity\Borrow.class
+entity\Address.class
+entity\Registration.class
+entity\BookCopy.class
+entity\Library.class
+entity\City.class
+entity\Basket.class
+entity\Category.class
+entity\Member.class
+entity\Book.class
+entity\RegistrationId.class
