@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class RegistrationId {
+public class RegistrationId implements java.io.Serializable {
 	
 	 @Column(name = "library")
 	    private int registrationLibrary;
