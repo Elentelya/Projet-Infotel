@@ -18,19 +18,23 @@
     <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
+            <a class="navbar-brand">LocaLivre</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="accueil">Accueil</a></li>
-            <li><a href="test">Page de test</a></li>
+            <li><a href="accueil">Accueil</a></li>
+            <li><a href="books">Livres</a></li>
             <li><a href="#2">Page 2</a></li>
             <li><a href="#3">Page 3</a></li>
             <li><a href="#4">Page 4</a></li>
         </ul>
+        <c:if test="${empty firstname}">
+            var1 is empty or null.
+        </c:if>
+        <c:if test="${not empty firstname}">
+            var1 is NOT empty or null.
+        </c:if>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#5"><span class="glyphicon glyphicon-user"></span>
-                    Inscription</a></li>
-            <li><a href="#6"><span class="glyphicon glyphicon-log-in"></span>
+            <li><a href="login"><span class="glyphicon glyphicon-user"></span>
                     Connexion</a></li>
         </ul>
     </div>

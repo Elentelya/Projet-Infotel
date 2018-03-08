@@ -5,6 +5,7 @@ C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\M
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\Basket.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\test\HibernateUtil.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\Registration.java
+C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\dao\IDaoBook.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\dao\IDaoGeneric.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\dao\IDaoGenericImpl.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\BookCopy.java
@@ -16,5 +17,6 @@ C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\C
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\Library.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\RegistrationId.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\Book.java
+C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\dao\DaoBookImpl.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\Author.java
 C:\Users\sede\git\Projet-Infotel\projet_dao\src\main\java\com\formation\entity\City.java

@@ -1,2 +1,4 @@
-com\formation\service\ServiceGenericImpl.class
+com\formation\service\IServiceMember.class
+com\formation\service\ServiceMemberImpl.class
 com\formation\service\IServiceGeneric.class
+com\formation\service\ServiceGenericImpl.class

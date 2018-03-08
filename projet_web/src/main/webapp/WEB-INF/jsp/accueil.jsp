@@ -13,35 +13,25 @@
 <body>
 
 	<%@include file="navigation.jsp"%>
-	<div class="container">
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Firstname</th>
-					<th>Lastname</th>
-					<th>Email</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>John</td>
-					<td>Doe</td>
-					<td>john@example.com</td>
-				</tr>
-				<tr>
-					<td>Mary</td>
-					<td>Moe</td>
-					<td>mary@example.com</td>
-				</tr>
-				<tr>
-					<td>July</td>
-					<td>Dooley</td>
-					<td>july@example.com</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<%-- Session bean message : ${sessionScope['scopedTarget.sessionBean'].message}
-    	Session bean UUID :    ${sessionScope['scopedTarget.sessionBean'].id} --%>
+	<h1>Qui sommes nous ?</h1>
+	<p>Lancé à l'occasion des Rencontres nationales de la librairie en
+		juin 2017, le site locaLivre.com est le premier moteur de recherche
+		des librairies indépendantes. Il fédère 16 portails (groupement ou
+		associations de libraires indépendants) et rassemble les stocks de 700
+		librairies. Depuis son lancement, la page d'accueil du site a été
+		repensée et optimisée. Cette nouvelle approche s'inscrit plus
+		fortement dans notre identité collective, redonne de l'importance au
+		moteur de recherche et guide l'internaute vers la réservation ou la
+		commande. Nous vous encourageons à rejoindre un portail de libraires
+		pour intégrer ce moteur de recherche qui a pour objectif d'augmenter
+		de manière significative vos commandes en ligne.
+	<hr />
+	<h1>La charte de nos librairies</h1>
+	<p>Devant le succès rencontré par la diffusion de la charte des
+		libraires sous forme d'affiche l'an dernier, puis de carte postale aux
+		RNL, nous vous proposons cette année de l'installer en rotation sur
+		l'ensemble de vos outils digitaux. Chaque message de la charte est
+		déployé sur un visuel et invite l'internaute à la consulter dans son
+		intégralité sur le site localivre.com</p>
 </body>
 </html>

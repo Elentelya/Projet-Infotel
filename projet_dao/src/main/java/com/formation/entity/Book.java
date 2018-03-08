@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Lob;
+
 import javax.imageio.ImageIO;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,14 +18,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.query.Query;
-
-import com.formation.test.HibernateUtil;
 
 
 @Entity
@@ -73,7 +70,6 @@ public class Book implements java.io.Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
 	public Book(String title, String description, double price, Date publicationDate,
 			String ImageName, boolean popularBook, Category bookCategory, Editor bookEditor, List<Author> bookAuthors) throws IOException {
