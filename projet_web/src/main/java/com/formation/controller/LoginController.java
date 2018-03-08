@@ -1,8 +1,5 @@
 package com.formation.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -31,18 +28,13 @@ public class LoginController {
 
 	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
 	private String addMember(@ModelAttribute("newMember") Member member, Model model,
-			@RequestParam("email") String email, @RequestParam("password") String password, HttpServletRequest request) {
-
+			@RequestParam("email") String email, @RequestParam("password") String password) {
+          
+        // Recuperation de l'objet membre par son email
 		member = iServiceMember.passwordRecovery(email);
 
-		String encryptedPassword = passwordEncoder.encode(member.getPassword());
-
-		// Test mail dans la BDD et comparatif password encodés
-		if ((iServiceMember.findByEmail(email) == true) && (passwordEncoder.matches(member.getPassword(), encryptedPassword))) {    
-
-			HttpSession httpSession = request.getSession();
-			httpSession.setAttribute("user", member.getFirstname());
-
+		// Test mail dans la BDD et comparatif password emis et hashé en bdd
+		if ((iServiceMember.findByEmail(email) == true) && (passwordEncoder.matches(password, member.getPassword()))) {    
 			model.addAttribute("msg", "Bienvenue " + member.getFirstname());
 			return "welcome";
 		} else {
