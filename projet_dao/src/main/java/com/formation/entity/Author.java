@@ -1,4 +1,4 @@
-package entity;
+package com.formation.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,15 +25,6 @@ public class Author implements java.io.Serializable {
 	
 	@ManyToMany(mappedBy = "bookAuthors")
     private List<Book> authorBooks = new ArrayList<Book>();
-
-
-	public Author(String firstname, String lastname, String shortBio, List<Book> authorbooks) {
-		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.shortBio = shortBio;
-		authorBooks = authorbooks;
-	}
 
 	public Author(String firstname, String lastname, String shortBio) {
 		super();

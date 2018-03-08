@@ -1,9 +1,15 @@
-package entity;
+package com.formation.entity;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
+import javax.persistence.Lob;
+import javax.imageio.ImageIO;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +22,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.query.Query;
+
+import com.formation.test.HibernateUtil;
 
 
 @Entity
@@ -30,9 +40,20 @@ public class Book implements java.io.Serializable {
 	private String description;
 	private double price;
 	private Date publicationDate;
-	private String imagePath;
 	private boolean popularBook;
 	
+	@Column( name = "book_image" )
+	@Lob
+	private byte[] bookImage;
+	
+	public byte[] getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(byte[] bookImage) {
+		this.bookImage = bookImage;
+	}
+
 	@ManyToOne
 	private Category bookCategory;
 	
@@ -53,20 +74,32 @@ public class Book implements java.io.Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Book(String title, String description, double price, Date publicationDate, String imagePath,
-			boolean popularBook, Category bookCategory, Editor bookEditor, List<Author> bookAuthors) {
+	
+	public Book(String title, String description, double price, Date publicationDate,
+			String ImageName, boolean popularBook, Category bookCategory, Editor bookEditor, List<Author> bookAuthors) throws IOException {
 		super();
 		this.title = title;
 		this.description = description;
 		this.price = price;
 		this.publicationDate = publicationDate;
-		this.imagePath = imagePath;
 		this.popularBook = popularBook;
 		this.bookCategory = bookCategory;
 		this.bookEditor = bookEditor;
 		this.bookAuthors = bookAuthors;
+		bookImage = this.extractBytes(ImageName);
 	}
+	
+	public byte[] extractBytes (String ImageName) throws IOException {
+		 // open image
+		 File imgPath = new File(ImageName);
+		 BufferedImage bufferedImage = ImageIO.read(imgPath);
 
+		 // get DataBufferBytes from Raster
+		 WritableRaster raster = bufferedImage .getRaster();
+		 DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
+
+		 return ( data.getData() );
+		}
 
 	public int getBookId() {
 		return bookId;
@@ -102,14 +135,6 @@ public class Book implements java.io.Serializable {
 
 	public void setPublicationDate(Date publicationDate) {
 		this.publicationDate = publicationDate;
-	}
-
-	public String getImagePath() {
-		return imagePath;
-	}
-
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
 	}
 
 	public boolean isPopularBook() {

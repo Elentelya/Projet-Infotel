@@ -1,4 +1,4 @@
-package entity;
+package com.formation.entity;
 
 import java.util.List;
 
@@ -22,6 +22,7 @@ public class Library implements java.io.Serializable {
 	private int libraryId;
 	
 	private String name;
+	private String numero;
 	
 	@OneToOne
 	@JoinColumn(name = "address", referencedColumnName = "address_id")
@@ -35,10 +36,10 @@ public class Library implements java.io.Serializable {
 
 
 
-	public Library(String name, Address libraryAddress) {
+	public Library(String name, String numero) {
 		super();
 		this.name = name;
-		this.libraryAddress = libraryAddress;
+		this.setNumero(numero);
 	}
 
 	public Library() {
@@ -79,6 +80,14 @@ public class Library implements java.io.Serializable {
 
 	public void setLibraryRegistrations(List<Registration> libraryRegistrations) {
 		this.libraryRegistrations = libraryRegistrations;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 }

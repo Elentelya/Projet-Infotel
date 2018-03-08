@@ -1,4 +1,4 @@
-package entity;
+package com.formation.entity;
 
 import java.util.List;
 
@@ -39,14 +39,13 @@ public class Member implements java.io.Serializable {
 	private List<Registration> memberRegistrations;
 
 	public Member(String firstname, String lastname, String email, String password, String phone,
-			Address memberAddress, boolean admin) {
+			boolean admin) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
-		this.memberAddress = memberAddress;
 		this.admin = admin;
 	}
 

@@ -1,4 +1,4 @@
-package entity;
+package com.formation.entity;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class Editor implements java.io.Serializable {
 	private List<Book> editorBooks;
 	
 	
-	public Editor(String name, Address editorAddress) {
+	public Editor(String name) {
 		super();
 		this.name = name;
 		this.editorAddress = editorAddress;

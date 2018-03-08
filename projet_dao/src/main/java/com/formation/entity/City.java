@@ -1,4 +1,4 @@
-package entity;
+package com.formation.entity;
 
 import java.util.List;
 
@@ -24,6 +24,12 @@ public class City implements java.io.Serializable {
 	
 	@OneToMany(mappedBy="addressCity")
 	private List<Address> cityAddresses;
+
+	public City(String name, String postalCode) {
+		super();
+		this.postalCode = postalCode;
+		this.name = name;
+	}
 
 	public City() {
 		// TODO Auto-generated constructor stub
