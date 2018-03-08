@@ -22,8 +22,17 @@
         </div>
         <ul class="nav navbar-nav">
             <li><a href="accueil">Accueil</a></li>
-            <li><a href="books">Livres</a></li>
+            <li><a href="test">Page de test</a></li>
+            <li><a href="#2">Page 2</a></li>
+            <li><a href="#3">Page 3</a></li>
+            <li><a href="#4">Page 4</a></li>
         </ul>
+        <c:if test="${empty firstname}">
+            var1 is empty or null.
+        </c:if>
+        <c:if test="${not empty firstname}">
+            var1 is NOT empty or null.
+        </c:if>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="login"><span class="glyphicon glyphicon-user"></span>
                     Connexion</a></li>

@@ -1,6 +1,6 @@
 package com.formation.test;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -64,8 +64,8 @@ public class HibernateMain {
 			session.save(paris14);
 			session.save(paris13);
 
-			Address bayardJeunAddress = new Address("18 rue Barb�s", "", montrouge, bayardJeun);
-			Address albinMichelAddress = new Address("5 all�e de la Deuxi�me Division Blind�e", "", paris14, albinMichel);
+			Address bayardJeunAddress = new Address("18 rue Barbes", "", montrouge, bayardJeun);
+			Address albinMichelAddress = new Address("5 allee de la Deuxieme Division Blindee", "", paris14, albinMichel);
 			Address robertLaffontAddress = new Address("30 Place d'Italie", "", paris13, robertLaffont);
 
 			session.save(bayardJeunAddress);
@@ -78,7 +78,7 @@ public class HibernateMain {
 			SimpleDateFormat dateformat = new SimpleDateFormat("dd/MM/yyyy");
 			Date dateEragon = (Date) dateformat.parse("26/08/2003");
 
-			Book eragon = new Book("Eragon", "Eragon est le premier roman du cycle L�H�ritage. C�est un voyage dans un univers fantastique o� l'on retrouve de nombreuses races : elfes, nains, dragons, chats-garous... Le personnage visible sur la couverture est Saphira, la dragonne d�Eragon.", 
+			Book eragon = new Book("Eragon", "Eragon est le premier roman du cycle L'Heritage.", 
 					20, dateEragon, "Eragon.jpg",
 					true, fantasy, bayardJeun, eragonAuthor);
 
@@ -87,7 +87,7 @@ public class HibernateMain {
 
 			Date dateTroisemeHum = (Date) dateformat.parse("02/10/2012");
 
-			Book troisiemHum = new Book("Troisième Humanité", "Troisième humanité est le premier opus du cycle de romans Troisieme humanite. Charles Wells, un pal�ontologue très connu, part explorer le lac Vostok en Antarctique. L�-bas, il fait la d�couverte de deux squelettes d'humains de dix-sept m�tres de haut et un corps de la m�me taille, parfaitement conserv� dans la glace.", 
+			Book troisiemHum = new Book("Troisième Humanité", "Troisième humanité est le premier opus du cycle de romans Troisieme humanite.", 
 					20, dateTroisemeHum, "TroisiemeHum.jpg",
 					true, sf, bayardJeun, troisiemeHumAuthor);
 
@@ -96,7 +96,7 @@ public class HibernateMain {
 
 			Date dateStupTremb = (Date) dateformat.parse("01/01/1999");
 
-			Book stupTremb = new Book("Stupeur et Tremblements", "Amélie, originaire de Belgique qui a vécu sa petite enfance au Japon, a toujours admiré le raffinement et l’art de vivre du pays. À l’âge adulte, elle y retourne pour un contrat d’interprète au sein de la prestigieuse compagnie Yumimoto, afin d’y travailler et d’y vivre comme une Japonaise en tant qu'employée.", 
+			Book stupTremb = new Book("Stupeur et Tremblements", "Amélie, originaire de Belgique qui a vécu sa petite enfance au Japon, a toujours admiré le raffinement et l’art de vivre du pays.", 
 					10, dateStupTremb, "StupTremb.jpg",
 					true, roman, albinMichel, stupTrembAuthor);
 
@@ -105,7 +105,7 @@ public class HibernateMain {
 
 			Date dateOuEsTu = (Date) dateformat.parse("12/11/2001");
 
-			Book ouEsTu = new Book("Ou es_tu?", "Philip et Susan ont toujours compté l'un sur l'autre, et ce, depuis leur plus tendre enfance. Mais le choix de Susan qui souhaite participer à une mission humanitaire en Amérique centrale, va bouleverser leurs vies.", 
+			Book ouEsTu = new Book("Ou es_tu?", "Philip et Susan ont toujours compté l'un sur l'autre.", 
 					10, dateOuEsTu, "OuEsTu.jpg",
 					true, drame, robertLaffont, ouEsTuAuthor);
 
@@ -145,25 +145,99 @@ public class HibernateMain {
 
 			session.save(library3);
 			session.save(library3Address);
+			
+			BookCopy copyStupTremb1 = new BookCopy("bon", stupTremb, library1, true);
+			BookCopy copyStupTremb2 = new BookCopy("moyen", stupTremb, library2, true);
+			BookCopy copyStupTremb3 = new BookCopy("bon", stupTremb, library3, true);
+			
+			session.save(copyStupTremb1);
+			session.save(copyStupTremb2);
+			session.save(copyStupTremb3);
 
+			Status status1 = new Status("En cours");
+			Status status2 = new Status("Validé");
+			Status status3 = new Status("Payé");
+			Status status4 = new Status("Annulé");
 
-			Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "1234", "0631589658",false);
-			Address membre1Address = new Address("Rue St Exupéry", "", bastia2, membre1);
-			Date dateregMembre1 = (Date) dateformat.parse("02/07/2012");
-			Registration regMembre1 = new Registration(dateregMembre1, library3, membre1);
+			session.save(status1);
+			session.save(status2);
+			session.save(status3);
+			session.save(status4);
 
-			session.save(membre1);
-			session.save(regMembre1);
-
-			Member membre2 = new Member("Slitheen", "Jerry", "jerryslitheen@mail.com", "1234", "156894563789",false);
-			City raxacoricofallapatorius = new City("Raxacoricofallapatorius", "369458");
-			Address membre2Address = new Address("Une autre planète", "à droite après Clom", raxacoricofallapatorius, membre2);
-			Date dateregMembre2 = (Date) dateformat.parse("15/04/2015");
-			Registration regMembre2 = new Registration(dateregMembre2, library1, membre2);
-
-			session.save(membre2);
-			session.save(regMembre2);
-
+//			Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "1234", "0631589658",false);
+//			Address membre1Address = new Address("Rue St Exupéry", "", bastia2, membre1);
+//			Date dateregMembre1 = (Date) dateformat.parse("02/07/2012");
+//			Registration regMembre1 = new Registration(dateregMembre1, library3, membre1);
+//
+//			session.save(membre1);
+//			session.save(membre1Address);
+//			session.save(regMembre1);
+//
+//			Member membre2 = new Member( "Jerry", "Slitheen", "jerryslitheen@mail.com", "1234", "156894563789",false);
+//			City raxacoricofallapatorius = new City("Raxacoricofallapatorius", "369458");
+//			Address membre2Address = new Address("Une autre planète", "à droite après Clom", raxacoricofallapatorius, membre2);
+//			Date dateregMembre2 = (Date) dateformat.parse("15/04/2015");
+//			Registration regMembre2 = new Registration(dateregMembre2, library1, membre2);
+//
+//			session.save(membre2);
+//			session.save(raxacoricofallapatorius);
+//			session.save(membre2Address);
+//			session.save(regMembre2);
+//
+//			Member membre3 = new Member("Maitre", "", "haroldsaxon@mail.com", "1234", "8596467315",true);
+//			City londresSW1A = new City("Londres", "SW1A 2AA");
+//			Address membre3Address = new Address("10 Downing Street","", londresSW1A, membre3);
+//			Date dateregMembre3 = (Date) dateformat.parse("30/09/2007");
+//			Registration regMembre3 = new Registration(dateregMembre3, library2, membre3);
+//
+//			session.save(membre3);
+//			session.save(londresSW1A);
+//			session.save(membre3Address);
+//			session.save(regMembre3);
+//
+//			Member membre4 = new Member("Doctor", "Who", "tardis@mail.com", "1234", "9632154878",true);
+//			City londresX = new City("Londres", "XXXX");
+//			Address membre4Address = new Address("Tardis", "ça dépend", londresX, membre4);
+//			Date dateregMembre4 = (Date) dateformat.parse("19/01/1596");
+//			Registration regMembre4 = new Registration(dateregMembre4, library1, membre4);
+//
+//			session.save(membre4);
+//			session.save(londresX);
+//			session.save(membre4Address);
+//			session.save(regMembre4);
+//
+//			Member membre5 = new Member("Tyler", "Rose", "roseTyler@mail.com", "1234", "7596472315",false);
+//			Address membre5Address = new Address("Tardis", "ça dépend", londresX, membre5);
+//			Date dateregMembre5 = (Date) dateformat.parse("19/01/1596");
+//			Registration regMembre5 = new Registration(dateregMembre5, library1, membre5);
+//
+//			session.save(membre5);
+//			session.save(membre5Address);
+//			session.save(regMembre5);
+//			
+//			Date dateBasket1 = (Date) dateformat.parse("16/04/2002");
+//			Date dateBasket1_2 = (Date) dateformat.parse("21/04/2002");
+//			Basket basket1 = new Basket(dateBasket1, dateBasket1_2, membre4, status4);
+//			
+//			session.save(basket1);
+//			
+//			Date dateBasket2 = (Date) dateformat.parse("16/08/2017");
+//			Date dateBasket2_2 = (Date) dateformat.parse("21/08/2017");
+//			Basket basket2 = new Basket(dateBasket2, dateBasket2_2, membre1, status3);
+//			
+//			session.save(basket2);
+//			
+//			Date dateBasket3 = (Date) dateformat.parse("16/02/2018");
+//			Date dateBasket3_2 = (Date) dateformat.parse("16/03/2018");
+//			Basket basket3 = new Basket(dateBasket3, dateBasket3_2, membre1, status2);
+//			
+//			session.save(basket3);
+//			
+//			Date dateBorrow1 = (Date) dateformat.parse("21/05/2002");
+//			Borrow borrow1 = new Borrow(dateBasket1_2, dateBorrow1, copyStupTremb1, basket1);
+//
+//			session.save(borrow1);
+			
 			transaction.commit();
 
 		}catch (Exception e) {

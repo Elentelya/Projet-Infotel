@@ -11,19 +11,5 @@ public class HomeController {
     public String welcome(Model model) {
         return "accueil";
     }
-    
-//    @Autowired
-//    private SessionBean sessionBean;
-//	
-//    @RequestMapping(path={"/", "/accueil"})
-//    public String welcome(HttpSession session) {
-//    	sessionBean.setMessage("Time : " + now());
-//    	session.setAttribute("sessionBean", sessionBean);
-//        return "accueil";
-//    }
-//
-//    private String now() {
-//	    return new SimpleDateFormat("HH:mm:ss").format(new Date());
-//	}
 
 }
