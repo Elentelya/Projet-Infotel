@@ -13,6 +13,7 @@ public interface IServiceBook {
 	    List<Book> findAll();
 	    List<Book> search(String search);
 	    List<Book> popular();
+	    List<Book> findBookByCategory(String categoryName);
 	    
 	    void update(Book book);
 

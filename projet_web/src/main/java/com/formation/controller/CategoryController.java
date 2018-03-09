@@ -6,18 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.formation.service.IServiceBook;
+import com.formation.dao.IDaoBook;
 
 @Controller
 public class CategoryController {
 
 	@Autowired
-	IServiceBook iServiceBook;
+	IDaoBook iServiceBook;
 	
 	@RequestMapping(value = "/sciencefiction", method = RequestMethod.GET)
 	private String sciencefiction(Model model) {
 		// Recupere la liste complète des livres
-		model.addAttribute("listeLivres", iServiceBook.findAll());
+		//model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Science-Fiction"));
 		model.addAttribute("category", "Sciences Fictions");
 		return "category";
 	}
@@ -25,7 +25,7 @@ public class CategoryController {
 	@RequestMapping(value = "/fantasy", method = RequestMethod.GET)
 	private String fantasy(Model model) {
 		// Recupere la liste complète des livres
-		model.addAttribute("listeLivres", iServiceBook.findAll());
+		model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Fantasy"));
 		model.addAttribute("category", "Fantasy");
 		return "category";
 	}
@@ -33,7 +33,7 @@ public class CategoryController {
 	@RequestMapping(value = "/thriller", method = RequestMethod.GET)
 	private String thriller(Model model) {
 		// Recupere la liste complète des livres
-		model.addAttribute("listeLivres", iServiceBook.findAll());
+		model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Thriller"));
 		model.addAttribute("category", "Thriller");
 		return "category";
 	}

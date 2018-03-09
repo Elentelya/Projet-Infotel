@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.formation.entity.Book;
+import com.formation.entity.Category;
 
 @Repository
 @Transactional
@@ -65,5 +66,14 @@ public class DaoBookImpl implements IDaoBook {
 		List<Book> listeLivres = sessionFactory.getCurrentSession()
 				.createQuery("FROM Book book WHERE book.popularBook = 1").list();
 		return listeLivres;
+	}
+
+	@Override
+	public List<Book> findBookByCategory(String categoryName) {
+		Category category = (Category) sessionFactory.getCurrentSession().createQuery("FROM Category c WHERE c.name = :name").setParameter("name", categoryName);
+		@SuppressWarnings("unchecked")
+		List<Book> listeLivres = sessionFactory.getCurrentSession()
+                .createQuery("FROM Book b WHERE b.bookCategory_category_id = :category").setParameter("category", category.getCategoryId()).list();
+        return listeLivres;
 	}
 }
