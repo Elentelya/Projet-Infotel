@@ -7,6 +7,9 @@ import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
@@ -16,39 +19,31 @@ import javax.persistence.Table;
 @Table(name="registration")
 public class Registration implements java.io.Serializable {
 
-	@EmbeddedId
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "registration_id")
-	private RegistrationId registrationId;
+	private int registrationId;
 	
     private Date registrationDate;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("library")
+	@ManyToOne
     private Library registrationLibrary;
 
-    // bi-directional many-to-one association to FournisseurDepartement
-    @ManyToOne(fetch = FetchType.LAZY)
-	@MapsId("member")
+	@ManyToOne
     private Member registrationMember;
     
-	
 
 	public Registration(Date registrationDate, Library registrationLibrary,
 			Member registrationMember) {
 		super();
-		this.registrationId = new RegistrationId(registrationLibrary.getLibraryId(), registrationMember.getMemberId());
 		this.registrationDate = registrationDate;
 		this.registrationLibrary = registrationLibrary;
 		this.registrationMember = registrationMember;
 	}
 
-
-
-	public RegistrationId getRegistrationId() {
+	public int getRegistrationId() {
 		return registrationId;
 	}
-
-
 
 	public Date getRegistrationDate() {
 		return registrationDate;

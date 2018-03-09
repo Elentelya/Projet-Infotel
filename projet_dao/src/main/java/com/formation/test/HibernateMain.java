@@ -164,79 +164,79 @@ public class HibernateMain {
 			session.save(status3);
 			session.save(status4);
 
-//			Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "1234", "0631589658",false);
-//			Address membre1Address = new Address("Rue St Exupéry", "", bastia2, membre1);
-//			Date dateregMembre1 = (Date) dateformat.parse("02/07/2012");
-//			Registration regMembre1 = new Registration(dateregMembre1, library3, membre1);
-//
-//			session.save(membre1);
-//			session.save(membre1Address);
-//			session.save(regMembre1);
-//
-//			Member membre2 = new Member( "Jerry", "Slitheen", "jerryslitheen@mail.com", "1234", "156894563789",false);
-//			City raxacoricofallapatorius = new City("Raxacoricofallapatorius", "369458");
-//			Address membre2Address = new Address("Une autre planète", "à droite après Clom", raxacoricofallapatorius, membre2);
-//			Date dateregMembre2 = (Date) dateformat.parse("15/04/2015");
-//			Registration regMembre2 = new Registration(dateregMembre2, library1, membre2);
-//
-//			session.save(membre2);
-//			session.save(raxacoricofallapatorius);
-//			session.save(membre2Address);
-//			session.save(regMembre2);
-//
-//			Member membre3 = new Member("Maitre", "", "haroldsaxon@mail.com", "1234", "8596467315",true);
-//			City londresSW1A = new City("Londres", "SW1A 2AA");
-//			Address membre3Address = new Address("10 Downing Street","", londresSW1A, membre3);
-//			Date dateregMembre3 = (Date) dateformat.parse("30/09/2007");
-//			Registration regMembre3 = new Registration(dateregMembre3, library2, membre3);
-//
-//			session.save(membre3);
-//			session.save(londresSW1A);
-//			session.save(membre3Address);
-//			session.save(regMembre3);
-//
-//			Member membre4 = new Member("Doctor", "Who", "tardis@mail.com", "1234", "9632154878",true);
-//			City londresX = new City("Londres", "XXXX");
-//			Address membre4Address = new Address("Tardis", "ça dépend", londresX, membre4);
-//			Date dateregMembre4 = (Date) dateformat.parse("19/01/1596");
-//			Registration regMembre4 = new Registration(dateregMembre4, library1, membre4);
-//
-//			session.save(membre4);
-//			session.save(londresX);
-//			session.save(membre4Address);
-//			session.save(regMembre4);
-//
-//			Member membre5 = new Member("Tyler", "Rose", "roseTyler@mail.com", "1234", "7596472315",false);
-//			Address membre5Address = new Address("Tardis", "ça dépend", londresX, membre5);
-//			Date dateregMembre5 = (Date) dateformat.parse("19/01/1596");
-//			Registration regMembre5 = new Registration(dateregMembre5, library1, membre5);
-//
-//			session.save(membre5);
-//			session.save(membre5Address);
-//			session.save(regMembre5);
-//			
-//			Date dateBasket1 = (Date) dateformat.parse("16/04/2002");
-//			Date dateBasket1_2 = (Date) dateformat.parse("21/04/2002");
-//			Basket basket1 = new Basket(dateBasket1, dateBasket1_2, membre4, status4);
-//			
-//			session.save(basket1);
-//			
-//			Date dateBasket2 = (Date) dateformat.parse("16/08/2017");
-//			Date dateBasket2_2 = (Date) dateformat.parse("21/08/2017");
-//			Basket basket2 = new Basket(dateBasket2, dateBasket2_2, membre1, status3);
-//			
-//			session.save(basket2);
-//			
-//			Date dateBasket3 = (Date) dateformat.parse("16/02/2018");
-//			Date dateBasket3_2 = (Date) dateformat.parse("16/03/2018");
-//			Basket basket3 = new Basket(dateBasket3, dateBasket3_2, membre1, status2);
-//			
-//			session.save(basket3);
-//			
-//			Date dateBorrow1 = (Date) dateformat.parse("21/05/2002");
-//			Borrow borrow1 = new Borrow(dateBasket1_2, dateBorrow1, copyStupTremb1, basket1);
-//
-//			session.save(borrow1);
+			Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "1234", "0631589658",false);
+			Address membre1Address = new Address("Rue St Exupéry", "", bastia2, membre1);
+			Date dateregMembre1 = (Date) dateformat.parse("02/07/2012");
+			Registration regMembre1 = new Registration(dateregMembre1, library3, membre1);
+
+			session.save(membre1);
+			session.save(membre1Address);
+			session.save(regMembre1);
+
+			Member membre2 = new Member( "Jerry", "Slitheen", "jerryslitheen@mail.com", "1234", "156894563789",false);
+			City raxacoricofallapatorius = new City("Raxacoricofallapatorius", "369458");
+			Address membre2Address = new Address("Une autre planète", "à droite après Clom", raxacoricofallapatorius, membre2);
+			Date dateregMembre2 = (Date) dateformat.parse("15/04/2015");
+			Registration regMembre2 = new Registration(dateregMembre2, library1, membre2);
+
+			session.save(membre2);
+			session.save(raxacoricofallapatorius);
+			session.save(membre2Address);
+			session.save(regMembre2);
+
+			Member membre3 = new Member("Maitre", "", "haroldsaxon@mail.com", "1234", "8596467315",true);
+			City londresSW1A = new City("Londres", "SW1A 2AA");
+			Address membre3Address = new Address("10 Downing Street","", londresSW1A, membre3);
+			Date dateregMembre3 = (Date) dateformat.parse("30/09/2007");
+			Registration regMembre3 = new Registration(dateregMembre3, library2, membre3);
+
+			session.save(membre3);
+			session.save(londresSW1A);
+			session.save(membre3Address);
+			session.save(regMembre3);
+
+			Member membre4 = new Member("Doctor", "Who", "tardis@mail.com", "1234", "9632154878",true);
+			City londresX = new City("Londres", "XXXX");
+			Address membre4Address = new Address("Tardis", "ça dépend", londresX, membre4);
+			Date dateregMembre4 = (Date) dateformat.parse("19/01/1596");
+			Registration regMembre4 = new Registration(dateregMembre4, library1, membre4);
+
+			session.save(membre4);
+			session.save(londresX);
+			session.save(membre4Address);
+			session.save(regMembre4);
+
+			Member membre5 = new Member("Tyler", "Rose", "roseTyler@mail.com", "1234", "7596472315",false);
+			Address membre5Address = new Address("Tardis", "ça dépend", londresX, membre5);
+			Date dateregMembre5 = (Date) dateformat.parse("19/01/1596");
+			Registration regMembre5 = new Registration(dateregMembre5, library1, membre5);
+
+			session.save(membre5);
+			session.save(membre5Address);
+			session.save(regMembre5);
+			
+			Date dateBasket1 = (Date) dateformat.parse("16/04/2002");
+			Date dateBasket1_2 = (Date) dateformat.parse("21/04/2002");
+			Basket basket1 = new Basket(dateBasket1, dateBasket1_2, membre4, status4);
+			
+			session.save(basket1);
+			
+			Date dateBasket2 = (Date) dateformat.parse("16/08/2017");
+			Date dateBasket2_2 = (Date) dateformat.parse("21/08/2017");
+			Basket basket2 = new Basket(dateBasket2, dateBasket2_2, membre1, status3);
+			
+			session.save(basket2);
+			
+			Date dateBasket3 = (Date) dateformat.parse("16/02/2018");
+			Date dateBasket3_2 = (Date) dateformat.parse("16/03/2018");
+			Basket basket3 = new Basket(dateBasket3, dateBasket3_2, membre1, status2);
+			
+			session.save(basket3);
+			
+			Date dateBorrow1 = (Date) dateformat.parse("21/05/2002");
+			Borrow borrow1 = new Borrow(dateBasket1_2, dateBorrow1, copyStupTremb1, basket1);
+
+			session.save(borrow1);
 			
 			transaction.commit();
 
