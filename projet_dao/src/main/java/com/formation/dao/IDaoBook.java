@@ -11,9 +11,9 @@ public interface IDaoBook {
 	    Book findById(int bookId);
 	    List<Book> findByTitle(String title);
 	    List<Book> findAll();
+	    List<Book> search(String search);
 	    
 	    void update(Book book);
-
-	    void delete(int bookId);
 	    
+	    void delete(int bookId);
 }

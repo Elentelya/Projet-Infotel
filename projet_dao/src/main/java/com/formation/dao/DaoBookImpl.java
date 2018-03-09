@@ -30,7 +30,7 @@ public class DaoBookImpl implements IDaoBook {
 	public List<Book> findByTitle(String title) {
 		@SuppressWarnings("unchecked")
 		List<Book> listeLivres = sessionFactory.getCurrentSession()
-				.createQuery("FROM Book b WHERE m.title = :title").setParameter("title", title).list();
+				.createQuery("FROM Book book WHERE book.title = :title").setParameter("title", title).list();
 		return listeLivres;
 	}
 
@@ -51,4 +51,11 @@ public class DaoBookImpl implements IDaoBook {
 		sessionFactory.getCurrentSession().delete(bookId);
 	}
 
+	@Override
+	public List<Book> search(String search) {
+		@SuppressWarnings("unchecked")
+		List<Book> listeLivres = sessionFactory.getCurrentSession()
+				.createQuery("FROM Book book WHERE book.title LIKE :title").setParameter("title", "%"+search+"%").list();
+		return listeLivres;
+	}
 }

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+#Fri Mar 09 10:24:51 CET 2018
+=======
 #Thu Mar 08 10:32:14 CET 2018
+>>>>>>> branch 'master' of https://github.com/Elentelya/Projet-Infotel
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8
 eclipse.preferences.version=1
 org.eclipse.jdt.core.compiler.source=1.8

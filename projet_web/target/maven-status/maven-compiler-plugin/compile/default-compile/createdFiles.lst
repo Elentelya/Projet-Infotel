@@ -1,1 +1,5 @@
+com\formation\controller\PopularController.class
+com\formation\controller\LoginController.class
+com\formation\controller\BookController.class
+com\formation\controller\RegistrationController.class
 com\formation\controller\HomeController.class
