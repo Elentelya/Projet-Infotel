@@ -17,7 +17,7 @@ public class PopularController {
 	@RequestMapping(value = "/bestseller", method = RequestMethod.GET)
 	private String login(Model model) {
 		// Recupere la liste complète des livres
-		model.addAttribute("listeLivres", iServiceBook.findAll());
+		 model.addAttribute("listeLivres", iServiceBook.popular());
 		return "bestseller";
 	}
 }

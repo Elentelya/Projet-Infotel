@@ -23,10 +23,10 @@
                                     id="password" required>
                         <button class="btn btn-lg btn-primary btn-block" type="submit">
                             Sign in</button>
-                        <label class="checkbox pull-left"> <input type="checkbox"
+                        <!-- <label class="checkbox pull-left"> <input type="checkbox"
                             value="remember-me"> Remember me
                         </label> <a href="#" class="pull-right need-help"></a><span 
-                            class="clearfix"></span><!-- anticipation sur 'Need help?' ou 'Mot de passe perdu'  -->
+                            class="clearfix"></span> --><!-- anticipation sur 'Need help?' ou 'Mot de passe perdu'  -->
                     </form>
                 </div>
                 <a href="register" class="text-center new-account">Create an

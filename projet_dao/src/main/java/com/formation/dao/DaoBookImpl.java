@@ -58,4 +58,12 @@ public class DaoBookImpl implements IDaoBook {
 				.createQuery("FROM Book book WHERE book.title LIKE :title").setParameter("title", "%"+search+"%").list();
 		return listeLivres;
 	}
+
+	@Override
+	public List<Book> popular() {
+		@SuppressWarnings("unchecked")
+		List<Book> listeLivres = sessionFactory.getCurrentSession()
+				.createQuery("FROM Book book WHERE book.popularBook = 1").list();
+		return listeLivres;
+	}
 }

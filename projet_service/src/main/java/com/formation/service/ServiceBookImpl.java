@@ -48,4 +48,9 @@ public class ServiceBookImpl implements IServiceBook {
 	public List<Book> search(String search) {
 		return iDaoBook.search(search);
 	}
+
+	@Override
+	public List<Book> popular() {
+		return iDaoBook.popular();
+	}
 }

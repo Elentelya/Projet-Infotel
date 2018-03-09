@@ -11,7 +11,6 @@
 <title>Page d'accueil</title>
 </head>
 <body>
-<<<<<<< HEAD
 	<div class="jumbotron text-center">
 		<h1>LocaLivre</h1>
 		<p>Application de gestion de livres d'une bibliothèque</p>
@@ -23,8 +22,17 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="accueil">Accueil</a></li>
-			<li><a href="bestsellers">Meilleures ventes</a></li>
-			<li><a href="books">Catalogue complet</a></li>				
+			<li><a href="books">Catalogue complet</a></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+				data-toggle="dropdown">Catégories </a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">Science Fiction</a>
+					<a class="dropdown-item" href="#">Fantasy</a>
+					<a class="dropdown-item" href="#">Jeunesse</a>
+					<a class="dropdown-item" href="#">Thriller</a>	
+				</div>
+			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="login"><span class="glyphicon glyphicon-user"></span>
@@ -32,31 +40,5 @@
 		</ul>
 	</div>
 	</nav>
-=======
-    <div class="jumbotron text-center">
-        <h1>LocaLivre</h1>
-        <p>Application de gestion de livres d'une bibliothèque</p>
-    </div>
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="accueil">Accueil</a></li>
-            <li><a href="test">Page de test</a></li>
-            <li><a href="#2">Page 2</a></li>
-            <li><a href="#3">Page 3</a></li>
-            <li><a href="#4">Page 4</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#5"><span class="glyphicon glyphicon-user"></span>
-                    Inscription</a></li>
-            <li><a href="#6"><span class="glyphicon glyphicon-log-in"></span>
-                    Connexion</a></li>
-        </ul>
-    </div>
-    </nav>
->>>>>>> branch 'master' of https://github.com/Elentelya/Projet-Infotel
 </body>
 </html>

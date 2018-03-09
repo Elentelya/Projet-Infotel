@@ -10,16 +10,20 @@
 <body>
 	<%@include file="navigation.jsp"%>
 
+	<div class="col-md-4 col-offset-4 centered">
+        <h3 style="background-color: lavender;">Catalogue complet</h3>
+    </div>	
+    <hr /><br/>
 	<div class="container">
 		<div class="row">
 			<div class="span12">
 				<form class="form-horizontal" method="POST"
 					action="${baseurl}recherche">
-					<ul class="nav navbar-nav">
+					<ul class="nav navbar-nav" >
 						<li><input class="form-control mr-sm-2" placeholder="Search by Title"
 							id="motRecherche" name="motRecherche" /></li>
 						<li><input type="submit" id="btnAdd"
-							class="btn btn-default value=" Ok" /></li>
+							class="btn btn-default value="Ok" /></li>
 					</ul>
 				</form>
 			</div>
@@ -50,5 +54,6 @@
 			</div>
 		</div>
 	</div>
+	<br/><hr/>
 </body>
 </html>

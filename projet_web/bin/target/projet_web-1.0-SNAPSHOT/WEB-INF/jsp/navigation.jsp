@@ -15,14 +15,24 @@
 		<h1>LocaLivre</h1>
 		<p>Application de gestion de livres d'une bibliothèque</p>
 	</div>
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand">LocaLivre</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li><a href="accueil">Accueil</a></li>
-			<li><a href="books">Livres</a></li>			
+			<li><a href="books">Catalogue complet</a></li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbardrop"
+				data-toggle="dropdown">Catégories </a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="#">Science Fiction</a>
+					<a class="dropdown-item" href="#">Fantasy</a>
+					<a class="dropdown-item" href="#">Jeunesse</a>
+					<a class="dropdown-item" href="#">Thriller</a>	
+				</div>
+			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="login"><span class="glyphicon glyphicon-user"></span>

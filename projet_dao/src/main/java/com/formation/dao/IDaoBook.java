@@ -12,6 +12,7 @@ public interface IDaoBook {
 	    List<Book> findByTitle(String title);
 	    List<Book> findAll();
 	    List<Book> search(String search);
+	    List<Book> popular();
 	    
 	    void update(Book book);
 	    

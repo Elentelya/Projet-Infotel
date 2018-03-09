@@ -5,44 +5,49 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Catalogue complet</title>
 </head>
 <body>
 	<%@include file="navigation.jsp"%>
-	<div class="row">
-		<div class="col-md-9">
-			<div class="row">
-				<div class="container">
-					<table class="table">
-						<thead>
-							<tr>
-								<th>Titre</th>
-								<th>Prix</th>
-								<th>Description</th>
-							</tr>
-						</thead>
-						<c:forEach items="${listeLivres}" var="livre">
-							<tbody>
+
+	<div class="container">
+		<div class="row">
+			<div class="span12">
+				<form class="form-horizontal" method="POST"
+					action="${baseurl}recherche">
+					<ul class="nav navbar-nav">
+						<li><input class="form-control mr-sm-2" placeholder="Search by Title"
+							id="motRecherche" name="motRecherche" /></li>
+						<li><input type="submit" id="btnAdd"
+							class="btn btn-default value=" Ok" /></li>
+					</ul>
+				</form>
+			</div>
+			<br/><hr/>
+			<div class="span12">
+				<div class="row">
+					<div class="container">
+						<table class="table">
+							<thead>
 								<tr>
-									<td>${livre.title}</td>
-									<td>${livre.price}</td>
-									<td>${livre.description}</td>
+									<th>Titre</th>
+									<th>Prix</th>
+									<th>Description</th>
 								</tr>
-							</tbody>
-						</c:forEach>
-					</table>
+							</thead>
+							<c:forEach items="${listeLivres}" var="livre">
+								<tbody>
+									<tr>
+										<td>${livre.title}</td>
+										<td>${livre.price}</td>
+										<td>${livre.description}</td>
+									</tr>
+								</tbody>
+							</c:forEach>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="col-md-3">			
-			<form class="form-horizontal" method="POST"
-                    action="${baseurl}recherche">
-                    <ul class="nav navbar-nav">
-                        <li><input class="form-control mr-sm-2" placeholder="Search" id="motRecherche" name="motRecherche"/></li>
-                        <li><input type="submit" id="btnAdd"
-                            class="btn btn-default value="Ok" /></li>
-                    </ul>
-                </form>
 		</div>
 	</div>
 </body>
