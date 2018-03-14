@@ -29,25 +29,44 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	private String addMember(@ModelAttribute("newMember") Member member, Model model,
-			@RequestParam("email") String email, @RequestParam("password") String password, HttpServletRequest request) {
+			@RequestParam("email") String email, @RequestParam("password") String password,
+			HttpServletRequest request) {
 
 		member = iServiceMember.passwordRecovery(email);
-
-		String encryptedPassword = passwordEncoder.encode(member.getPassword());
-
-		// Test mail dans la BDD et comparatif password encodés
-		if ((iServiceMember.findByEmail(email) == true) && (passwordEncoder.matches(member.getPassword(), encryptedPassword))) {    
-
-			HttpSession httpSession = request.getSession();
-			httpSession.setAttribute("user", member.getFirstname());
-
-			model.addAttribute("msg", "Bienvenue " + member.getFirstname());
-			return "welcome";
-		} else {
+		HttpSession session = request.getSession();		
+		
+		if (member == null) {
 			model.addAttribute("msg", "Username or Password is wrong");
-			return "welcome";
+			return "login";
+		} else {
+			boolean userExist = (iServiceMember.findByEmail(email) == true)
+					&& (passwordEncoder.matches(password, member.getPassword()));
+
+			
+			/**************** Session ****************/
+			session.setAttribute("isAdmin", member.isAdmin());
+			session.setAttribute("userExist", userExist);
+			session.setAttribute("name", member.getFirstname());
+			/****************************************/
+
+			if (userExist) {
+				model.addAttribute("msg", "Bienvenue " + member.getFirstname());
+				return "redirect:accueil";
+			} else {
+				model.addAttribute("msg", "Username or Password is wrong");
+				return "login";
+			}
 		}
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	private String closeSession(HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:accueil";
+
 	}
 }

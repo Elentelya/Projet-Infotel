@@ -31,12 +31,12 @@ public class RegistrationController {
       
       // Test mail unique
       if(iServiceMember.findByEmail(member.getEmail()) == true) {
-          model.addAttribute("msg", "Erreur : Cet email est d√©j√† utilis√©");
+          model.addAttribute("msg", "Erreur : Cet email est dÈj‡† utilisÈ");
          return "welcome";
       }
       // Test passwords identiques
       else if(!password.equals(confirm)) {
-          model.addAttribute("msg", "Erreur : Mot de passe diff√©rents");
+          model.addAttribute("msg", "Erreur : Mot de passe diffÈrents");
          return "welcome";
       }
       // Test mail regex

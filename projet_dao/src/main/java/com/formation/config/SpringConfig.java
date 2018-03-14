@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration // definit cette classe comme conteneur Spring
 @EnableTransactionManagement // permet les transactions
-@PropertySource({ "classpath:configuration.properties" }) // fait appel à la config des propriï¿½tï¿½s de connections
+@PropertySource({ "classpath:configuration.properties" }) // fait appel ï¿½ la config des propriï¿½tï¿½s de connections
 @ComponentScan({ "com.formation" }) // scan des packages
 public class SpringConfig {
 
@@ -38,7 +38,7 @@ public class SpringConfig {
         return sessionFactory;
     }
 
-    @Bean // bean de connection ï¿½ la base de données
+    @Bean // bean de connection ï¿½ la base de donnï¿½es
     public DataSource restDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(env.getProperty("jdbc.driver.className"));
@@ -49,7 +49,7 @@ public class SpringConfig {
         return dataSource;
     }
 
-    @Bean // bean de transaction, nï¿½cessite un @Transactionnal pour se connecter
+    @Bean // bean de transaction, nécessite un @Transactionnal pour se connecter
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
 

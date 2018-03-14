@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.formation.entity.Author;
 import com.formation.entity.Book;
+import com.formation.entity.Category;
 
 @Repository
 @Transactional
@@ -33,7 +34,7 @@ public class DaoBookImpl implements IDaoBook {
 	public List<Book> findByTitle(String title) {
 		@SuppressWarnings("unchecked")
 		List<Book> listeLivres = sessionFactory.getCurrentSession()
-				.createQuery("FROM Book b WHERE m.title = :title").setParameter("title", title).list();
+				.createQuery("FROM Book book WHERE book.title = :title").setParameter("title", title).list();
 		return listeLivres;
 	}
 
@@ -54,16 +55,29 @@ public class DaoBookImpl implements IDaoBook {
 		sessionFactory.getCurrentSession().delete(bookId);
 	}
 
+
+	public List<Book> search(String search) {
+		@SuppressWarnings("unchecked")
+		List<Book> listeLivres = sessionFactory.getCurrentSession()
+				.createQuery("FROM Book book WHERE book.title LIKE :title").setParameter("title", "%"+search+"%").list();
+		return listeLivres;
+	}
+
+	@Override
+	public List<Book> popular() {
+		@SuppressWarnings("unchecked")
+		List<Book> listeLivres = sessionFactory.getCurrentSession()
+				.createQuery("FROM Book book WHERE book.popularBook = 1").list();
+		return listeLivres;
+	}
+
 	@Override
 	public List<Book> findBookByCategory(String categoryName) {
+		Category category = (Category) sessionFactory.getCurrentSession().createQuery("FROM Category c WHERE c.name = :name").setParameter("name", categoryName);
 		@SuppressWarnings("unchecked")
-		Session session = sessionFactory.getCurrentSession();
-		Query categoryId = session.createQuery(
-				"FROM category c WHERE c.name = :name")
-				.setParameter("name", categoryName);
 		List<Book> listeLivres = sessionFactory.getCurrentSession()
-				.createQuery("FROM Book b WHERE b.category = :category").setParameter("category", categoryId).list();
-		return listeLivres;
+                .createQuery("FROM Book b WHERE b.bookCategory_category_id = :category").setParameter("category", category.getCategoryId()).list();
+        return listeLivres;
 	}
 
 }

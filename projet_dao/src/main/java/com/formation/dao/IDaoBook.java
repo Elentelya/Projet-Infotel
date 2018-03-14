@@ -11,12 +11,10 @@ public interface IDaoBook {
 	    Book findById(int bookId);
 	    List<Book> findByTitle(String title);
 	    List<Book> findAll();
-	    
-	    void update(Book book);
-
-	    void delete(int bookId);
-	    
+	    List<Book> search(String search);
+	    List<Book> popular();
 	    List<Book> findBookByCategory(String categoryName);
 	    
-	    
+	    void update(Book book);
+	    void delete(int bookId);
 }

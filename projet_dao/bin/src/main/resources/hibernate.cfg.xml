@@ -10,7 +10,7 @@
 		<property name="current_session_context_class">thread</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
-		<property name="hbm2ddl.auto">update</property>
+		<property name="hbm2ddl.auto">create</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
 		<property name="current_session_context_class">thread</property> <!-- singleton -->
@@ -18,18 +18,19 @@
 		<property name="hbm2ddl.auto">create</property> <!-- créer les tables -->
 		<property name="format_sql">true</property>
 
-		<mapping class="entity.Address" />
-		<mapping class="entity.Author" />
-		<mapping class="entity.Basket" />
-		<mapping class="entity.Book" />
-		<mapping class="entity.BookCopy" />
-		<mapping class="entity.Borrow" />
-		<mapping class="entity.Category" />
-		<mapping class="entity.City" />
-		<mapping class="entity.Editor" />
-		<mapping class="entity.Library" />
-		<mapping class="entity.Member" />
-		<mapping class="entity.Registration" />
+		<mapping class="com.formation.entity.Address" />
+		<mapping class="com.formation.entity.Author" />
+		<mapping class="com.formation.entity.Basket" />
+		<mapping class="com.formation.entity.Book" />
+		<mapping class="com.formation.entity.BookCopy" />
+		<mapping class="com.formation.entity.Borrow" />
+		<mapping class="com.formation.entity.Category" />
+		<mapping class="com.formation.entity.City" />
+		<mapping class="com.formation.entity.Editor" />
+		<mapping class="com.formation.entity.Library" />
+		<mapping class="com.formation.entity.Member" />
+		<mapping class="com.formation.entity.Registration" />
+		<mapping class="com.formation.entity.Status" />
 
 	</session-factory>
 </hibernate-configuration>
