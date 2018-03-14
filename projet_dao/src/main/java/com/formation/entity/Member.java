@@ -27,6 +27,7 @@ public class Member implements java.io.Serializable {
 	private String password;
 	private String phone;
 	private boolean admin;
+	private boolean active;
 	
 	@OneToMany(mappedBy="basketMember")
 	private List<Basket> memberBaskets;
@@ -39,7 +40,7 @@ public class Member implements java.io.Serializable {
 	private List<Registration> memberRegistrations;
 
 	public Member(String firstname, String lastname, String email, String password, String phone,
-			boolean admin) {
+			boolean admin, boolean active) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -47,6 +48,7 @@ public class Member implements java.io.Serializable {
 		this.password = password;
 		this.phone = phone;
 		this.admin = admin;
+		this.active = active;
 	}
 
 	public Member() {

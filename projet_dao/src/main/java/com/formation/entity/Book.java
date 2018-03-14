@@ -2,9 +2,11 @@ package com.formation.entity;
 
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferByte;
+import java.awt.image.ImagingOpException;
 import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Blob;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,9 @@ public class Book implements java.io.Serializable {
 	private Date publicationDate;
 	private boolean popularBook;
 	private String bookImage;
+	
+//	@Column( name = "book_image" )
+//	private Blob bookImage;
 
 	@ManyToOne
 	private Category bookCategory;
@@ -79,8 +84,17 @@ public class Book implements java.io.Serializable {
 	}
 
 	
+	public String getBookImage() {
+		return bookImage;
+	}
+
+
+	public void setBookImage(String bookImage) {
+		this.bookImage = bookImage;
+	}
+	
 //	public Book(String title, String description, double price, Date publicationDate,
-//			String ImageName, boolean popularBook, Category bookCategory, Editor bookEditor, List<Author> bookAuthors) throws IOException {
+//			Blob bookImage, boolean popularBook, Category bookCategory, Editor bookEditor, List<Author> bookAuthors) throws IOException {
 //		super();
 //		this.title = title;
 //		this.description = description;
@@ -90,32 +104,19 @@ public class Book implements java.io.Serializable {
 //		this.bookCategory = bookCategory;
 //		this.bookEditor = bookEditor;
 //		this.bookAuthors = bookAuthors;
-//		bookImage = this.extractBytes(ImageName);
-//	}
-	
-//	@Column( name = "book_image" )
-//	@Lob
-//	private byte[] bookImage;
-
-//	public byte[] getBookImage() {
-//		return bookImage;
-//	}
-//
-//	public void setBookImage(byte[] bookImage) {
 //		this.bookImage = bookImage;
 //	}
 	
-	public byte[] extractBytes (String ImageName) throws IOException {
-		 // open image
-		 File imgPath = new File(ImageName);
-		 BufferedImage bufferedImage = ImageIO.read(imgPath);
 
-		 // get DataBufferBytes from Raster
-		 WritableRaster raster = bufferedImage .getRaster();
-		 DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
+//	public Blob getBookImage() {
+//		return bookImage;
+//	}
+//
+//
+//	public void setBookImage(Blob bookImage) {
+//		this.bookImage = bookImage;
+//	}
 
-		 return ( data.getData() );
-		}
 
 	public int getBookId() {
 		return bookId;
@@ -192,16 +193,5 @@ public class Book implements java.io.Serializable {
 	public void setBookAuthors(List<Author> bookAuthors) {
 		this.bookAuthors = bookAuthors;
 	}
-
-
-	public String getBookImage() {
-		return bookImage;
-	}
-
-
-	public void setBookImage(String bookImage) {
-		this.bookImage = bookImage;
-	}
-
 	
 }

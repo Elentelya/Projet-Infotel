@@ -16,4 +16,7 @@ public interface IDaoBook {
 
 	    void delete(int bookId);
 	    
+	    List<Book> findBookByCategory(String categoryName);
+	    
+	    
 }

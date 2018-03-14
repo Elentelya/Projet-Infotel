@@ -15,7 +15,7 @@
 
 		<property name="current_session_context_class">thread</property> <!-- singleton -->
 		<property name="show_sql">true</property> <!-- voir requête SQL dans la console -->
-		<property name="hbm2ddl.auto">create</property> <!-- créer les tables -->
+		<property name="hbm2ddl.auto">update</property> <!-- créer les tables -->
 		<property name="format_sql">true</property>
 
 		<mapping class="com.formation.entity.Address" />
