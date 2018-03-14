@@ -16,5 +16,6 @@ public interface IDaoMember {
 
     void delete(int memberId);
     
-    Member passwordRecovery(String email);
+    List<Member> passwordRecovery(String email);
+    
 }

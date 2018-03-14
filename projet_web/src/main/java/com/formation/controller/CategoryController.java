@@ -22,19 +22,19 @@ public class CategoryController {
 		return "category";
 	}
 	
-	@RequestMapping(value = "/fantasy", method = RequestMethod.GET)
-	private String fantasy(Model model) {
-		// Recupere la liste complète des livres
-		model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Fantasy"));
-		model.addAttribute("category", "Fantasy");
-		return "category";
-	}
-	
-	@RequestMapping(value = "/thriller", method = RequestMethod.GET)
-	private String thriller(Model model) {
-		// Recupere la liste complète des livres
-		model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Thriller"));
-		model.addAttribute("category", "Thriller");
-		return "category";
-	}
+//	@RequestMapping(value = "/fantasy", method = RequestMethod.GET)
+//	private String fantasy(Model model) {
+//		// Recupere la liste complète des livres
+//		model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Fantasy"));
+//		model.addAttribute("category", "Fantasy");
+//		return "category";
+//	}
+//	
+//	@RequestMapping(value = "/thriller", method = RequestMethod.GET)
+//	private String thriller(Model model) {
+//		// Recupere la liste complète des livres
+//		model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Thriller"));
+//		model.addAttribute("category", "Thriller");
+//		return "category";
+//	}
 }

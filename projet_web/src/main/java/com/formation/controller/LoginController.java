@@ -1,5 +1,8 @@
 package com.formation.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -26,20 +29,44 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	private String addMember(@ModelAttribute("newMember") Member member, Model model,
-			@RequestParam("email") String email, @RequestParam("password") String password) {
+			@RequestParam("email") String email, @RequestParam("password") String password,
+			HttpServletRequest request) {
 
 		member = iServiceMember.passwordRecovery(email);
-
-		// Test mail dans la BDD et comparatif password emis et hashé en bdd
-		if ((iServiceMember.findByEmail(email) == true) && (passwordEncoder.matches(password, member.getPassword()))) {
-			model.addAttribute("msg", "Bienvenue " + member.getFirstname());
-			return "welcome";
-		} else {
+		HttpSession session = request.getSession();		
+		
+		if (member == null) {
 			model.addAttribute("msg", "Username or Password is wrong");
-			return "welcome";
+			return "login";
+		} else {
+			boolean userExist = (iServiceMember.findByEmail(email) == true)
+					&& (passwordEncoder.matches(password, member.getPassword()));
+
+			
+			/**************** Session ****************/
+			session.setAttribute("isAdmin", member.isAdmin());
+			session.setAttribute("userExist", userExist);
+			session.setAttribute("name", member.getFirstname());
+			/****************************************/
+
+			if (userExist) {
+				model.addAttribute("msg", "Bienvenue " + member.getFirstname());
+				return "redirect:accueil";
+			} else {
+				model.addAttribute("msg", "Username or Password is wrong");
+				return "login";
+			}
 		}
 	}
 
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	private String closeSession(HttpServletRequest request) {
+
+		HttpSession session = request.getSession();
+		session.invalidate();
+		return "redirect:accueil";
+
+	}
 }

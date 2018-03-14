@@ -51,7 +51,9 @@ public class DaoMemberImpl implements IDaoMember {
     }
     
     @Override
-    public Member passwordRecovery(String email) { //SELECT password 
-        return (Member) sessionFactory.getCurrentSession().createQuery("FROM Member m WHERE m.email = :email").setParameter("email",email).list().get(0);
+    public List<Member> passwordRecovery(String email) { //SELECT password 
+    	@SuppressWarnings("unchecked")
+    	List<Member> listeMembres = sessionFactory.getCurrentSession().createQuery("FROM Member m WHERE m.email = :email").setParameter("email",email).list();
+    	return listeMembres;
     }
 }

@@ -49,7 +49,7 @@ public class SpringConfig {
         return dataSource;
     }
 
-    @Bean // bean de transaction, nï¿½cessite un @Transactionnal pour se connecter
+    @Bean // bean de transaction, nécessite un @Transactionnal pour se connecter
     @Autowired
     public HibernateTransactionManager transactionManager(SessionFactory sessionFactory) {
 
@@ -75,7 +75,6 @@ public class SpringConfig {
                 setProperty("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
                 setProperty("hibernate.dialect", env.getProperty("hibernate.dialect"));
                 setProperty("hibernate.globally_quoted_identifiers", "true");
-                
             }
         };
     }

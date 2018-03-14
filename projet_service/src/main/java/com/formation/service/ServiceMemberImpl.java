@@ -35,7 +35,7 @@ public class ServiceMemberImpl implements IServiceMember {
     @Override
     public boolean findByEmail(String email) {
         List<Member> listeMembres = iDaoMember.findByEmail(email);
-        if (listeMembres.size() == 0)
+        if (listeMembres.isEmpty() || listeMembres.size()<1 || listeMembres==null)
             return false;
         else
             return true;
@@ -65,6 +65,9 @@ public class ServiceMemberImpl implements IServiceMember {
 
     @Override
     public Member passwordRecovery(String email) {
-        return iDaoMember.passwordRecovery(email);
+    	if (iDaoMember.passwordRecovery(email).isEmpty()) {
+    	    return null;
+    	}
+    	else return iDaoMember.passwordRecovery(email).get(0);
     }
 }

@@ -90,17 +90,6 @@
                         </div>
                     </div>
                     
-                    <!-- <div class="form-group">
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i
-                                    class="fa fa-home fa-lg" aria-hidden="true"></i></span> <input
-                                    type="text" class="form-control" name="address"
-                                    id="address" placeholder="Enter your Address" />
-                            </div>
-                        </div>
-                    </div> -->
-                    
                     <div class="form-group ">
                         <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
                     </div>
