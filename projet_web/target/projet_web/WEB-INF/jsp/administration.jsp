@@ -15,33 +15,30 @@
 	<%@include file="navigation.jsp"%>
 	<h1>Page d'administration</h1>
 	<hr>
-	<br/>
-	<div class="span12">
-				<div class="row">
-					<div class="container">
-						<table class="table">
-							<thead>
-								<tr>
-									<th>Pseudo</th>
-									<th>Email</th>
-									<th>Phone</th>
-									<th>idAdmin</th>
-								</tr>
-							</thead>
-							<c:forEach items="${listeMembres}" var="membre">
-								<tbody>
-									<tr>
-										<td>${membre.firstname}</td>
-										<td>${membre.email}</td>
-										<td>${membre.phone}</td>
-										<td>${membre.admin}</td>
-									</tr>
-								</tbody>
-							</c:forEach>
-						</table>
-					</div>
-				</div>
-	
-
+	<br />
+	<div class="row">
+		<div class="container">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Pseudo</th>
+						<th>Email</th>
+						<th>Phone</th>
+						<th>idAdmin</th>
+					</tr>
+				</thead>
+				<c:forEach items="${listeMembres}" var="membre">
+					<tbody>
+						<tr>
+							<td>${membre.firstname}</td>
+							<td>${membre.email}</td>
+							<td>${membre.phone}</td>
+							<td>${membre.admin}</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
 </body>
 </html>

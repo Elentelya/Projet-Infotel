@@ -18,7 +18,6 @@ public class BookController {
 	
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
 	private String login(Model model) {
-		// Recupere la liste complète des livres
 		model.addAttribute("listeLivres", iServiceBook.findAll());
 		return "books";
 	}
@@ -29,4 +28,10 @@ public class BookController {
         model.addAttribute("listeLivres", iServiceBook.search(motRecherche));
         return "books";
     }
+	
+	@RequestMapping(value = "/bestseller", method = RequestMethod.GET)
+	private String popularBook(Model model) {
+		 model.addAttribute("listeLivres", iServiceBook.popular());
+		return "bestseller";
+	}
 }

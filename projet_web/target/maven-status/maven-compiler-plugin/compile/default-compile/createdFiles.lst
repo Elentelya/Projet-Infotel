@@ -1,4 +1,3 @@
-com\formation\controller\PopularController.class
 com\formation\controller\CategoryController.class
 com\formation\controller\LoginController.class
 com\formation\controller\BookController.class

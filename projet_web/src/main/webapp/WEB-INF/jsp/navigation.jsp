@@ -7,8 +7,7 @@
 <title>navigation</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script
@@ -40,27 +39,24 @@
 			</div>
 		</li>
 		
-		<li class="nav-item">
-			<a class="nav-link" href="administration">
-				<span class="glyphicon glyphicon-shopping-cart"></span>Panier
-			</a>
-		</li>
-		
-		<c:if test="${(sessionScope.isAdmin == true) && (sessionScope.userExist == true)}">
+		<c:if test="${(sessionScope.isAdmin == false)}">
 			<li class="nav-item">
-				<a class="nav-link" href="addBook">
-					<span class="glyphicon glyphicon-book"></span>Add Book
+				<a class="nav-link" href="administration">
+					<span class="glyphicon glyphicon-shopping-cart"></span>Panier
 				</a>
 			</li>
 		</c:if>
 
-
 		<c:if test="${(sessionScope.isAdmin == true) && (sessionScope.userExist == true)}">
-			<li class="nav-item">
-				<a class="nav-link" href="administration">
-					<span class="glyphicon glyphicon-wrench"></span>Administration
-				</a>
-			</li>
+			<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="administration" id="navbardrop" data-toggle="dropdown"><span class="glyphicon glyphicon-wrench"></span>Administration</a>
+			<div class="dropdown-menu">
+				<a class="dropdown-item" href="addBook"><span class="glyphicon glyphicon-book"></span> Ajouter un livre</a>
+				<a class="dropdown-item" href="listBook"><span class="glyphicon glyphicon-book"></span> Editer un livre</a>
+				<a class="dropdown-item" href="addMember"><span class="glyphicon glyphicon-user"></span> Ajouter un membre</a>
+				<a class="dropdown-item" href="listMember"><span class="glyphicon glyphicon-list-alt"></span> Editer un membre</a>
+			</div>
+		</li>
 		</c:if>
 		
 		<c:if test="${sessionScope.userExist == true}">

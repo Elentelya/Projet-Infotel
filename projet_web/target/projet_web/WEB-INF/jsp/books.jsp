@@ -19,12 +19,12 @@
 			<div class="span12">
 				<form class="form-horizontal" method="POST"
 					action="${baseurl}recherche">
-					<ul class="nav navbar-nav" >
-						<li><input class="form-control mr-sm-2" placeholder="Search by Title"
-							id="motRecherche" name="motRecherche" /></li>
-						<li><input type="submit" id="btnAdd"
-							class="btn btn-default value="Ok" /></li>
-					</ul>
+					<div class="form-inline">
+						<input class="form-control mr-sm-2" placeholder="Search by Title"
+							id="motRecherche" name="motRecherche" />
+						<input type="submit" id="btnAdd"
+							class="btn btn-default value="Ok" />
+					</div>
 				</form>
 			</div>
 			<br/><hr/>
