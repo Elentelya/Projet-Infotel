@@ -4,6 +4,7 @@ com\formation\entity\Status.class
 com\formation\entity\Book.class
 com\formation\entity\Address.class
 com\formation\entity\Registration.class
+com\formation\dao\DaoAuthorImpl.class
 com\formation\entity\BookCopy.class
 com\formation\dao\IDaoMember.class
 com\formation\entity\Member.class
@@ -12,6 +13,7 @@ com\formation\dao\IDaoGeneric.class
 com\formation\dao\IDaoBook.class
 com\formation\test\HibernateMain.class
 com\formation\dao\DaoBookImpl.class
+com\formation\dao\IDaoAuthor.class
 com\formation\entity\Category.class
 com\formation\entity\Borrow.class
 com\formation\entity\City.class
