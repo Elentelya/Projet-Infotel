@@ -5,10 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.dao.IDaoBook;
 
-@Controller
+@RestController
 public class CategoryController {
 
 	@Autowired
@@ -18,7 +19,7 @@ public class CategoryController {
 	private String sciencefiction(Model model) {
 		// Recupere la liste complète des livres
 		//model.addAttribute("listeLivres", iServiceBook.findBookByCategory("Science-Fiction"));
-		model.addAttribute("category", "Sciences Fictions");
+		model.addAttribute("category", "Science-Fiction");
 		return "category";
 	}
 	

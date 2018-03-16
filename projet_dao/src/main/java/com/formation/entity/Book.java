@@ -92,31 +92,6 @@ public class Book implements java.io.Serializable {
 	public void setBookImage(String bookImage) {
 		this.bookImage = bookImage;
 	}
-	
-//	public Book(String title, String description, double price, Date publicationDate,
-//			Blob bookImage, boolean popularBook, Category bookCategory, Editor bookEditor, List<Author> bookAuthors) throws IOException {
-//		super();
-//		this.title = title;
-//		this.description = description;
-//		this.price = price;
-//		this.publicationDate = publicationDate;
-//		this.popularBook = popularBook;
-//		this.bookCategory = bookCategory;
-//		this.bookEditor = bookEditor;
-//		this.bookAuthors = bookAuthors;
-//		this.bookImage = bookImage;
-//	}
-	
-
-//	public Blob getBookImage() {
-//		return bookImage;
-//	}
-//
-//
-//	public void setBookImage(Blob bookImage) {
-//		this.bookImage = bookImage;
-//	}
-
 
 	public int getBookId() {
 		return bookId;
