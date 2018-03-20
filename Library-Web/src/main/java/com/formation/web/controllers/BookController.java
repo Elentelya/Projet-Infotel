@@ -1,5 +1,7 @@
 package com.formation.web.controllers;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class BookController {
 	IAuthorService authorService;
 	
 
-	//DateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
+	DateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
 
 	// /*********************** CREATE **************************************/
 	// @PutMapping(value="/add", consumes = MediaType.APPLICATION_JSON_VALUE)
