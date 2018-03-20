@@ -15,34 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.dao.entities.Author;
+import com.formation.dao.entities.Library;
 import com.formation.service.exceptions.ServiceException;
-import com.formation.service.interfaces.IAuthorService;
+import com.formation.service.interfaces.ILibraryService;
 import com.formation.web.controller.dto.AuthorDto;
+import com.formation.web.controller.dto.LibraryDto;
 
 @RestController
-@RequestMapping("/author")
-public class AuthorController {
+@RequestMapping("/library")
+public class LibraryController {
 
 	@Autowired
-	IAuthorService authorService;
+	ILibraryService libraryService;
 
 	/*********************** CREATE **************************************/
 	@PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	private Resultat addAuthor(@RequestBody AuthorDto authorDto) {
+	private Resultat addLibrary(@RequestBody LibraryDto libraryDto) {
 
 		Resultat resultat = new Resultat();
 		try {
-			Author author = new Author(authorDto.getFirstname(), authorDto.getLastname(), authorDto.getShortBio());
-			authorService.insert(author);
+			Library library = new Library(libraryDto.getName(), libraryDto.getLibraryAddress(), libraryDto.getNumero());
+			libraryService.insert(library);
 
 			resultat.setSuccess(true);
-			resultat.setMessage(ConstantsController.ADD_AUTHOR_SUCCESS);
+			resultat.setMessage(ConstantsController.ADD_LIBRARY_SUCCESS);
 		} catch (ServiceException se) {
 			resultat.setSuccess(false);
 			resultat.setMessage(se.getMessage());
 		} catch (Exception e) {
 			resultat.setSuccess(false);
-			resultat.setMessage(ConstantsController.ADD_AUTHOR_ERRORS);
+			resultat.setMessage(ConstantsController.ADD_LIBRARY_ERRORS);
 			e.printStackTrace();
 		}
 		return resultat;
@@ -50,18 +52,19 @@ public class AuthorController {
 
 	/*********************** READ ALL ************************************/
 	@GetMapping(value = "/getAll")
-	private Resultat getAllAuthor() {
+	private Resultat getAllLibrary() {
 
 		Resultat resultat = new Resultat();
-		List<AuthorDto> listAuthors = new ArrayList<AuthorDto>();
+		List<LibraryDto> listLibraries = new ArrayList<LibraryDto>();
 
 		try {
-			List<Author> authors = authorService.getAll();
-			authors.forEach(author -> {
-				AuthorDto auteurDto = new AuthorDto(author.getFirstname(), author.getLastname(), author.getShortBio());
-				auteurDto.setId(author.getAuthorId());
-				listAuthors.add(auteurDto);
-				resultat.setPayload(listAuthors);
+			List<Library> libraries = libraryService.getAll();
+			libraries.forEach(library -> {
+				LibraryDto libraryDto = new LibraryDto(library.getName(), library.getNumero(), library.getAddress(), null, null);
+				library.setId(author.getAuthorId());
+				listLibraries.add(LibraryDto);
+				//library.getLibraryBookCopy(), library.getLibraryRegistrations()
+				resultat.setPayload(listLibraries);
 			});
 
 			resultat.setSuccess(true);

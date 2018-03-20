@@ -9,11 +9,10 @@ public class CategoryDto {
 	private String description;
 	private List<Integer> categoryBooksIds;
 
-	public CategoryDto(String name, String description, List<Integer> categoryBooksIds) {
+	public CategoryDto(String name, String description) {
 		super();
 		this.name = name;
 		this.description = description;
-		this.categoryBooksIds = categoryBooksIds;
 	}
 
 	public CategoryDto() {
@@ -48,4 +47,10 @@ public class CategoryDto {
 	public int getCategoryId() {
 		return categoryId;
 	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	
+	
 }

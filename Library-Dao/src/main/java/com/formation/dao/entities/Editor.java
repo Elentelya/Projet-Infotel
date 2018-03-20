@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,18 +21,19 @@ public class Editor implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "editor_id")
 	private int editorId;
-	private String name;
+	private String name, address;
 
-	@OneToOne
-	@JoinColumn(name = "address", referencedColumnName = "address_id")
-	private Address editorAddress;
+//	@OneToOne
+//	@JoinColumn(name = "address", referencedColumnName = "address_id")
+//	private Address editorAddress;
 
 	@OneToMany(mappedBy = "bookEditor")
 	private List<Book> editorBooks;
 
-	public Editor(String name) {
+	public Editor(String name, String address) {
 		super();
 		this.name = name;
+		this.address = address;
 	}
 
 	public Editor() {
@@ -49,12 +48,12 @@ public class Editor implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Address getEditorAddress() {
-		return editorAddress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setEditorAddress(Address editorAddress) {
-		this.editorAddress = editorAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public List<Book> getEditorBooks() {

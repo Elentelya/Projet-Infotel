@@ -8,16 +8,16 @@ public class LibraryDto {
 
 	private String name;
 	private String numero;
-	private int libraryAddressId;
+	private String libraryAddress;
 	private List<Integer> libraryBookCopyIds;
 	private List<Integer> libraryRegistrationIds;
 
-	public LibraryDto(String name, String numero, int libraryAddressId, List<Integer> libraryBookCopyIds,
+	public LibraryDto(String name, String numero, String libraryAddress, List<Integer> libraryBookCopyIds,
 			List<Integer> libraryRegistrationIds) {
 		super();
 		this.name = name;
 		this.numero = numero;
-		this.libraryAddressId = libraryAddressId;
+		this.libraryAddress = libraryAddress;
 		this.libraryBookCopyIds = libraryBookCopyIds;
 		this.libraryRegistrationIds = libraryRegistrationIds;
 	}
@@ -43,12 +43,12 @@ public class LibraryDto {
 		this.numero = numero;
 	}
 
-	public int getLibraryAddressId() {
-		return libraryAddressId;
+	public String getLibraryAddress() {
+		return libraryAddress;
 	}
 
-	public void setLibraryAddressId(int libraryAddressId) {
-		this.libraryAddressId = libraryAddressId;
+	public void setLibraryAddress(String libraryAddress) {
+		this.libraryAddress = libraryAddress;
 	}
 
 	public List<Integer> getLibraryBookCopyIds() {

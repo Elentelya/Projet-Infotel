@@ -1,9 +1,14 @@
 package com.formation.dao.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "library")
@@ -14,12 +19,11 @@ public class Library implements java.io.Serializable {
 	@Column(name = "library_id")
 	private int libraryId;
 
-	private String name;
-	private String numero;
+	private String name, numero, address;
 
-	@OneToOne
-	@JoinColumn(name = "address", referencedColumnName = "address_id")
-	private Address libraryAddress;
+//	@OneToOne
+//	@JoinColumn(name = "address", referencedColumnName = "address_id")
+//	private Address libraryAddress;
 
 	@OneToMany(mappedBy = "bookCopyLibrary")
 	private List<BookCopy> libraryBookCopys;
@@ -27,9 +31,10 @@ public class Library implements java.io.Serializable {
 	@OneToMany(mappedBy = "registrationLibrary")
 	private List<Registration> libraryRegistrations;
 
-	public Library(String name, String numero) {
+	public Library(String name, String address, String numero) {
 		super();
 		this.name = name;
+		this.address = address;
 		this.setNumero(numero);
 	}
 
@@ -49,12 +54,12 @@ public class Library implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public Address getLibraryAddress() {
-		return libraryAddress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setLibraryAddress(Address libraryAddress) {
-		this.libraryAddress = libraryAddress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public List<BookCopy> getLibraryBookCopy() {

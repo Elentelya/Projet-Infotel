@@ -4,13 +4,13 @@ public class EditorDto {
 
 	private int editorId;
 	private String name;
-	private int editorAddressId;
+	private String editorAddress;
 
 
-	public EditorDto(String name, int editorAddressId) {
+	public EditorDto(String name, String editorAddress) {
 		super();
 		this.name = name;
-		this.editorAddressId = editorAddressId;
+		this.editorAddress = editorAddress;
 	}
 
 	public EditorDto() {
@@ -25,12 +25,12 @@ public class EditorDto {
 		this.name = name;
 	}
 
-	public int getEditorAddressId() {
-		return editorAddressId;
+	public String getEditorAddress() {
+		return editorAddress;
 	}
 
-	public void setEditorAddressId(int editorAddressId) {
-		this.editorAddressId = editorAddressId;
+	public void setEditorAddress(String editorAddress) {
+		this.editorAddress = editorAddress;
 	}
 
 	public int getEditorId() {

@@ -1,14 +1,12 @@
 package com.formation.dao.implementations;
 
-import com.formation.dao.entities.Member;
-import com.formation.dao.interfaces.IMemberDao;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.formation.dao.entities.Member;
+import com.formation.dao.interfaces.IMemberDao;
 
 @Repository
 @Transactional
@@ -26,12 +24,12 @@ public class MemberDaoImpl implements IMemberDao {
 	@Override
     public boolean isUserExist(String email, String password){
         boolean success = false;
-        List<Member> memberChecked = (List<Member>) sessionFactory.getCurrentSession().createQuery("FROM Member m WHERE m.email= :email AND m.password= :password")
+        Member memberChecked = (Member) sessionFactory.getCurrentSession().createQuery("FROM Member m WHERE m.email= :email AND m.password= :password")
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .getSingleResult();
         
-        if(memberChecked.size() > 0){
+        if(memberChecked != null){
             success = true;
         }
         return success;

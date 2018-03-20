@@ -1,17 +1,19 @@
 package com.formation.dao.entities;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "member")
 public class Member implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,15 +26,16 @@ public class Member implements java.io.Serializable {
 	private String email;
 	private String password;
 	private String phone;
+	private String address;
 	private boolean admin;
 	private boolean active;
 
 	@OneToMany(mappedBy = "basketMember")
 	private List<Basket> memberBaskets;
 
-	@OneToOne
-	@JoinColumn(name = "address", referencedColumnName = "address_id")
-	private Address memberAddress;
+//	@OneToOne
+//	@JoinColumn(name = "address", referencedColumnName = "address_id")
+//	private Address memberAddress;
 
 	@OneToMany(mappedBy = "registrationMember")
 	private List<Registration> memberRegistrations;
@@ -113,12 +116,20 @@ public class Member implements java.io.Serializable {
 		this.memberBaskets = memberBaskets;
 	}
 
-	public Address getMemberAddress() {
-		return memberAddress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setMemberAddress(Address memberAddress) {
-		this.memberAddress = memberAddress;
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	public List<Registration> getMemberRegistrations() {
