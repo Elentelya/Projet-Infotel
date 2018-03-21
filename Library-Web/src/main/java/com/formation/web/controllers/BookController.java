@@ -52,6 +52,7 @@ public class BookController {
 			book.setBookEditor(editorService.getById(bookDto.getBookEditorId()));
 			bookService.insert(book);
 
+			resultat.setPayload(book); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.ADD_BOOK_SUCCESS);
 		} catch (ServiceException se) {
@@ -136,7 +137,8 @@ public class BookController {
 			//book.setBookEditor(bookDto.getBookEditorId());
 			
 			bookService.update(book);
-
+			
+			resultat.setPayload(book); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.UPDATE_BOOK_SUCCESS);
 		} catch (ServiceException se) {
@@ -158,6 +160,8 @@ public class BookController {
 		try {
 			bookService.delete(bookService.getById(id));
 
+			String message = "Deleted";
+			resultat.setPayload(message); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.DELETE_BOOK_SUCCESS);
 		} catch (ServiceException se) {

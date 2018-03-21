@@ -78,60 +78,32 @@ public class Main {
 		Editor edit2 = new Editor("Albin Michel", "5 allee de la Deuxieme Division Blindee - 75014 Paris");
 		Editor edit3 = new Editor("Robert Laffont", "30 Place d'Italie - 35000 Rennes");
 
-		//City city1 = new City("Montrouge", "92120");
-		//City city2 = new City("Paris", "75014");
-		//City city3 = new City("Rennes", "35000");
-		//City city4 = new City("Bastia", "20200");
-//		City city5 = new City("Lannion", "22300");
-//		City city6 = new City("Londres", "SW1A 2AA");
-
-		//Address adr1 = new Address("18 rue Barbes", "", city1, edit1);
-		//Address adr2 = new Address("5 allee de la Deuxieme Division Blindee", "", city2, edit2);
-		//Address adr3 = new Address("30 Place d'Italie", "", city3, edit3);
-
 		Library library1 = new Library("Bibliothèque Centrale", "Place du théâtre - 20200 Bastia","0495584600");
 		Library library2 = new Library("Médiathèque Gwenadu", "0296474700", "Rue St Exupéry - 22300 Lannion");
 		Library library3 = new Library("Bibliothèque de Toga", "0299324126", "Rue de St Malo - SW1A 2AA London");
-
-		//Address library1Address = new Address("Place du théâtre", "", city4, library1);
-		//library1.setLibraryAddress(library1Address);
-		//Address library2Address = new Address("Rue St Exupéry", "", city5, library2);
-		//library2.setLibraryAddress(library2Address);
-//		Address library3Address = new Address("Rue de St Malo", "", city3, library3);
-		//library3.setLibraryAddress(library3Address);
 
 		libraries.add(library1);
 		libraries.add(library2);
 		libraries.add(library3);
 
 		/***************** AJOUT DE MEMBRES ******************/
-		Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "1234", "0631589658", false, true);
-		//Address membre1Address = new Address("Rue St Exupéry", "", city3, membre1);
-		membre1.setAddress("12 rue des coquelicots - 19450 BidonVille");
+		Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "1234", "0631589658", "12 rue des coquelicots - 19450 BidonVille", false, true);
 		Date dateregMembre1 = new Date(2012, 07, 02);
 		Registration regMembre1 = new Registration(dateregMembre1, library3, membre1);
 
-		Member membre2 = new Member("Jerry", "Slitheen", "jerryslitheen@mail.com", "1234", "156894563789", false, true);
-		//Address membre2Address = new Address("Une autre planète", "à droite après Clom", city3, membre2);
-		membre2.setAddress("6 allé des peupliers - 29200 Brest");
+		Member membre2 = new Member("Jerry", "Slitheen", "jerryslitheen@mail.com", "1234", "156894563789", "6 allé des peupliers - 29200 Brest", false, true);
 		Date dateregMembre2 = new Date(2015, 04, 20);
 		Registration regMembre2 = new Registration(dateregMembre2, library1, membre2);
 
-		Member membre3 = new Member("Maitre", "", "haroldsaxon@mail.com", "1234", "8596467315", true, true);
-		//Address membre3Address = new Address("10 Downing Street", "", city6, membre3);
-		membre3.setAddress("143 rue du yop au chocolat - 44000 Nantes");
+		Member membre3 = new Member("Maitre", "", "haroldsaxon@mail.com", "1234", "8596467315", "143 rue du yop au chocolat - 44000 Nantes", true, true);
 		Date dateregMembre3 = new Date(2011, 11, 10);
 		Registration regMembre3 = new Registration(dateregMembre3, library2, membre3);
 
-		Member membre4 = new Member("Doctor", "Who", "tardis@mail.com", "1234", "9632154878", true, true);
-		//Address membre4Address = new Address("Tardis", "ça dépend", city6, membre4);
-		membre4.setAddress("17 impasse du ciel bleu");
+		Member membre4 = new Member("Doctor", "Who", "tardis@mail.com", "1234", "9632154878", "17 impasse du ciel bleu - 29200 Brest", true, true);
 		Date dateregMembre4 = new Date(2009, 02, 16);
 		Registration regMembre4 = new Registration(dateregMembre4, library1, membre4);
 
-		Member membre5 = new Member("Tyler", "Rose", "roseTyler@mail.com", "1234", "7596472315", false, true);
-		//Address membre5Address = new Address("Tardis", "ça dépend", city3, membre5);
-		membre5.setAddress("36 rue de la soif - 35000 Rennes");
+		Member membre5 = new Member("Tyler", "Rose", "roseTyler@mail.com", "1234", "7596472315", "36 rue de la soif - 35000 Rennes", false, true);
 		Date dateregMembre5 = new Date(2013, 05, 17);
 		Registration regMembre5 = new Registration(dateregMembre5, library1, membre5);
 		
@@ -250,27 +222,6 @@ public class Main {
 		daoGeneric.save(basket3);
 		
 		daoGeneric.save(borrow1);
-		
-//		daoGeneric.save(city1);
-//		daoGeneric.save(city2);
-//		daoGeneric.save(city3);
-//		daoGeneric.save(city4);
-//		daoGeneric.save(city5);
-//		daoGeneric.save(city6);
-//		
-//		daoGeneric.save(adr1);
-//		daoGeneric.save(adr2);
-//		daoGeneric.save(adr3);
-		
-//		daoGeneric.save(library1Address);
-//		daoGeneric.save(library2Address);
-//		daoGeneric.save(library3Address);
-		
-//		daoGeneric.save(membre1Address);
-//		daoGeneric.save(membre2Address);
-//		daoGeneric.save(membre3Address);
-//		daoGeneric.save(membre4Address);
-//		daoGeneric.save(membre5Address);
 		
 		System.out.println("Données insérées en base");
 	}

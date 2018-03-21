@@ -40,7 +40,7 @@ public class Member implements java.io.Serializable {
 	@OneToMany(mappedBy = "registrationMember")
 	private List<Registration> memberRegistrations;
 
-	public Member(String firstname, String lastname, String email, String password, String phone, boolean admin,
+	public Member(String firstname, String lastname, String email, String password, String phone, String address, boolean admin,
 			boolean active) {
 		super();
 		this.firstname = firstname;
@@ -48,6 +48,7 @@ public class Member implements java.io.Serializable {
 		this.email = email;
 		this.password = password;
 		this.phone = phone;
+		this.address = address;
 		this.admin = admin;
 		this.active = active;
 	}

@@ -35,6 +35,7 @@ public class AuthorController {
 			Author author = new Author(authorDto.getFirstname(), authorDto.getLastname(), authorDto.getShortBio());
 			authorService.insert(author);
 
+			resultat.setPayload(author); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.ADD_AUTHOR_SUCCESS);
 		} catch (ServiceException se) {
@@ -61,6 +62,7 @@ public class AuthorController {
 				AuthorDto auteurDto = new AuthorDto(author.getFirstname(), author.getLastname(), author.getShortBio());
 				auteurDto.setId(author.getAuthorId());
 				listAuthors.add(auteurDto);
+				
 				resultat.setPayload(listAuthors);
 			});
 
@@ -113,7 +115,8 @@ public class AuthorController {
 			author.setShortBio(authorDto.getShortBio());
 
 			authorService.update(author);
-
+						
+			resultat.setPayload(author); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.UPDATE_AUTHOR_SUCCESS);
 		} catch (ServiceException se) {
@@ -134,7 +137,9 @@ public class AuthorController {
 		Resultat resultat = new Resultat();
 		try {
 			authorService.delete(authorService.getById(id));
-
+			
+			String message = "Deleted";
+			resultat.setPayload(message); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.DELETE_AUTHOR_SUCCESS);
 		} catch (ServiceException se) {

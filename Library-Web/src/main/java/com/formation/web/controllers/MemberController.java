@@ -32,9 +32,10 @@ public class MemberController {
 
 		Resultat resultat = new Resultat();
 		try {
-			Member member = new Member(memberrDto.getFirstname(), memberrDto.getLastname(), memberrDto.getEmail(), memberrDto.getPassword(), memberrDto.getPhone(), memberrDto.isAdmin(), memberrDto.isActive());
+			Member member = new Member(memberrDto.getFirstname(), memberrDto.getLastname(), memberrDto.getEmail(), memberrDto.getPassword(), memberrDto.getPhone(), memberrDto.getAddress(), memberrDto.isAdmin(), memberrDto.isActive());
 			memberService.insert(member);
 
+			resultat.setPayload(member); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.ADD_MEMBER_SUCCESS);
 		} catch (ServiceException se) {
@@ -118,6 +119,7 @@ public class MemberController {
 
 			memberService.update(member);
 
+			resultat.setPayload(member); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.UPDATE_MEMBER_SUCCESS);
 		} catch (ServiceException se) {
@@ -139,6 +141,8 @@ public class MemberController {
 		try {
 			memberService.delete(memberService.getById(id));
 
+			String message = "Deleted";
+			resultat.setPayload(message); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.DELETE_MEMBER_SUCCESS);
 		} catch (ServiceException se) {

@@ -18,10 +18,11 @@ public class BookDto {
 	private int bookEditorId;
 
 	private List<Integer> bookAuthorsIds;
+	
+	public BookDto() {	}
 
 	public BookDto(String title, String description, double price, Date publicationDate, boolean popularBook,
 			String bookImage, int bookCategoryId, int bookEditorId) {
-		super();
 		this.title = title;
 		this.description = description;
 		this.price = price;
@@ -31,7 +32,6 @@ public class BookDto {
 		this.bookCategoryId = bookCategoryId;
 		this.bookEditorId = bookEditorId;
 	}
-
 	
 	public int getId() {
 		return id;

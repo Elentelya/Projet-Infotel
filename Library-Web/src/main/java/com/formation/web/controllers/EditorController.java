@@ -35,6 +35,7 @@ public class EditorController {
 			Editor editor = new Editor(editorDto.getName(), editorDto.getEditorAddress());		
 			editorService.insert(editor);
 			
+			resultat.setPayload(editor); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.ADD_EDITOR_SUCCESS);
 		}catch (ServiceException se) {
@@ -113,6 +114,7 @@ public class EditorController {
 			
 			editorService.update(editor);
 			
+			resultat.setPayload(editor); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.UPDATE_EDITOR_SUCCESS);
 		}catch (ServiceException se) {
@@ -134,6 +136,8 @@ public class EditorController {
 		try {
 			editorService.delete(editorService.getById(id));
 			
+			String message = "Deleted";
+			resultat.setPayload(message); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.DELETE_AUTHOR_SUCCESS);
 		}catch (ServiceException se) {

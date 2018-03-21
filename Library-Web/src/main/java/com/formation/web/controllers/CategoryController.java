@@ -35,6 +35,7 @@ public class CategoryController {
 			Category category = new Category(categoryDto.getName(), categoryDto.getDescription());		
 			categoryService.insert(category);
 			
+			resultat.setPayload(category); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.ADD_CATEGORY_SUCCESS);
 		}catch (ServiceException se) {
@@ -114,6 +115,7 @@ public class CategoryController {
 			
 			categoryService.update(category);
 			
+			resultat.setPayload(category); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.UPDATE_CATEGORY_SUCCESS);
 		}catch (ServiceException se) {
@@ -135,6 +137,8 @@ public class CategoryController {
 		try {
 			categoryService.delete(categoryService.getById(id));
 			
+			String message = "Deleted";
+			resultat.setPayload(message); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.DELETE_CATEGORY_SUCCESS);
 		}catch (ServiceException se) {

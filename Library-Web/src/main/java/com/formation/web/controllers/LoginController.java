@@ -28,6 +28,7 @@ public class LoginController {
 			MemberDto memberDto = new MemberDto(member.getFirstname(), member.getLastname(), member.getEmail(), member.getPhone(), member.getAddress(), member.isAdmin());
 			memberDto.setMemberId(member.getMemberId());
 			memberDto.setActive(member.isActive());
+			
 			resultat.setPayload(memberDto);
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.LOGIN_SUCCESS);

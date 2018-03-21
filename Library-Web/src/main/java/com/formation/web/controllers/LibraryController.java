@@ -5,7 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,7 +34,8 @@ public class LibraryController {
 		try {
 			Library library = new Library(libraryDto.getName(), libraryDto.getLibraryAddress(), libraryDto.getNumero());
 			libraryService.insert(library);
-
+			
+			resultat.setPayload(library); //
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.ADD_LIBRARY_SUCCESS);
 		} catch (ServiceException se) {
@@ -75,76 +79,81 @@ public class LibraryController {
 		return resultat;
 	}
 
-//	/************************* READ ************************************/
-//	@GetMapping(value = "/get/{id}")
-//	private Resultat getLibraryById(@PathVariable(value = "id") int id) {
-//
-//		Resultat resultat = new Resultat();
-//		try {
-//			Library library = libraryService.getById(id);
-//			LibraryDto libraryById = new LibraryDto(library.getName(), library.getNumero(), library.getAddress(), null, null);
-//			libraryById.setLibraryBookCopyIds(library.getLibraryBookCopy()); //libraryBookCopyIds
-//			libraryById.setLibraryRegistrationIds(libraryRegistrationIds);
-//			libraryById.setLibraryId(library.getLibraryId());
-//
-//			resultat.setPayload(libraryById);
-//			resultat.setSuccess(true);
-//			resultat.setMessage(ConstantsController.READ_AUTHOR_SUCCESS);
-//		} catch (ServiceException se) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(se.getMessage());
-//		} catch (Exception e) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(ConstantsController.READ_AUTHOR_ERRORS);
-//			e.printStackTrace();
-//		}
-//		return resultat;
-//	}
-//
-//	/************************* UPDATE ************************************/
-//	@PostMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-//	private Resultat updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable(value = "id") int id) {
-//
-//		Resultat resultat = new Resultat();
-//		try {
-//			Author author = authorService.getById(id);
-//			author.setFirstname(authorDto.getFirstname());
-//			author.setLastname(authorDto.getLastname());
-//			author.setShortBio(authorDto.getShortBio());
-//
-//			authorService.update(author);
-//
-//			resultat.setSuccess(true);
-//			resultat.setMessage(ConstantsController.UPDATE_AUTHOR_SUCCESS);
-//		} catch (ServiceException se) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(se.getMessage());
-//		} catch (Exception e) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(ConstantsController.UPDATE_AUTHOR_ERRORS);
-//			e.printStackTrace();
-//		}
-//		return resultat;
-//	}
-//
-//	/************************* DELETE ************************************/
-//	@DeleteMapping(value = "/delete/{id}")
-//	private Resultat deleteAuthor(@PathVariable(value = "id") int id) {
-//
-//		Resultat resultat = new Resultat();
-//		try {
-//			authorService.delete(authorService.getById(id));
-//
-//			resultat.setSuccess(true);
-//			resultat.setMessage(ConstantsController.DELETE_AUTHOR_SUCCESS);
-//		} catch (ServiceException se) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(se.getMessage());
-//		} catch (Exception e) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(ConstantsController.DELETE_AUTHOR_ERRORS);
-//			e.printStackTrace();
-//		}
-//		return resultat;
-//	}
+	/************************* READ ************************************/
+	@GetMapping(value = "/get/{id}")
+	private Resultat getLibraryById(@PathVariable(value = "id") int id) {
+
+		Resultat resultat = new Resultat();
+		try {
+			Library library = libraryService.getById(id);
+			LibraryDto libraryById = new LibraryDto(library.getName(), library.getNumero(), library.getAddress(), null, null);
+			//libraryById.setLibraryBookCopyIds(library.getLibraryBookCopy()); //libraryBookCopyIds
+			//libraryById.setLibraryRegistrationIds(libraryRegistrationIds);
+			libraryById.setLibraryId(library.getLibraryId());
+
+			resultat.setPayload(libraryById);
+			resultat.setSuccess(true);
+			resultat.setMessage(ConstantsController.READ_LIBRARY_SUCCESS);
+		} catch (ServiceException se) {
+			resultat.setSuccess(false);
+			resultat.setMessage(se.getMessage());
+		} catch (Exception e) {
+			resultat.setSuccess(false);
+			resultat.setMessage(ConstantsController.READ_LIBRARY_ERRORS);
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+
+	/************************* UPDATE ************************************/
+	@PostMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	private Resultat updateLibrary(@RequestBody LibraryDto libraryDto, @PathVariable(value = "id") int id) {
+
+		Resultat resultat = new Resultat();
+		try {
+			Library library = libraryService.getById(id);
+			library.setName(libraryDto.getName());
+			library.setNumero(libraryDto.getNumero());
+			library.setAddress(libraryDto.getLibraryAddress());
+			// copy
+			// registration
+
+			libraryService.update(library);
+
+			resultat.setPayload(library); //
+			resultat.setSuccess(true);
+			resultat.setMessage(ConstantsController.UPDATE_LIBRARY_SUCCESS);
+		} catch (ServiceException se) {
+			resultat.setSuccess(false);
+			resultat.setMessage(se.getMessage());
+		} catch (Exception e) {
+			resultat.setSuccess(false);
+			resultat.setMessage(ConstantsController.UPDATE_LIBRARY_ERRORS);
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+
+	/************************* DELETE ************************************/
+	@DeleteMapping(value = "/delete/{id}")
+	private Resultat deleteLibrary(@PathVariable(value = "id") int id) {
+
+		Resultat resultat = new Resultat();
+		try {
+			libraryService.delete(libraryService.getById(id));
+
+			String message = "Deleted";
+			resultat.setPayload(message); //
+			resultat.setSuccess(true);
+			resultat.setMessage(ConstantsController.DELETE_LIBRARY_SUCCESS);
+		} catch (ServiceException se) {
+			resultat.setSuccess(false);
+			resultat.setMessage(se.getMessage());
+		} catch (Exception e) {
+			resultat.setSuccess(false);
+			resultat.setMessage(ConstantsController.DELETE_LIBRARY_ERRORS);
+			e.printStackTrace();
+		}
+		return resultat;
+	}
 }
