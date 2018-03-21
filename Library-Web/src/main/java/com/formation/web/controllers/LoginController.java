@@ -22,6 +22,7 @@ public class LoginController {
 	private Resultat connexionMembre(@RequestBody InformationViewModel identifiants) {
 		
 		Resultat resultat = new Resultat();
+		
 		try {
 			Member member = memberService.login(identifiants.getEmail(), identifiants.getPassword());
 			MemberDto memberDto = new MemberDto(member.getFirstname(), member.getLastname(), member.getEmail(), member.getPhone(), member.getAddress(), member.isAdmin());

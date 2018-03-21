@@ -42,6 +42,19 @@ public class ConstantsController {
 	public static final String DELETE_BOOK_SUCCESS = "Suppression du livre";
 	public static final String DELETE_BOOK_ERRORS = "Une erreur est survenue lors de la suppression du livre";
 
+	// Messages pour Membre
+	public static final String ADD_MEMBER_SUCCESS = "Nouveau membre ajouté";
+	public static final String ADD_MEMBER_ERRORS = "Une erreur est survenue lors de l'ajout du membre";
+	public static final String LIST_MEMBER_SUCCESS = "Liste des membres affichée";
+	public static final String LIST_MEMBER_ERRORS = "Une erreur est survenue lors de l'affichage des membres";
+	public static final String READ_MEMBER_SUCCESS = "Informations affichées sur le membre";
+	public static final String READ_MEMBER_ERRORS = "Une erreur est survenue lors de l'affichage des information de le membre";
+	public static final String UPDATE_MEMBER_SUCCESS = "Mise à jour du membre";
+	public static final String UPDATE_MEMBER_ERRORS = "Une erreur est survenue lors de la mise a jour du membre";
+	public static final String DELETE_MEMBER_SUCCESS = "Suppression du membre";
+	public static final String DELETE_MEMBER_ERRORS = "Une erreur est survenue lors de la suppression du membre";
+
+		
 	// Messages pour Editeur
 	public static final String ADD_EDITOR_SUCCESS = "Nouvel editeur ajouté";
 	public static final String ADD_EDITOR_ERRORS = "Une erreur est survenue lors de l'ajout de l'editeur";
