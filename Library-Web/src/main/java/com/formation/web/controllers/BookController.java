@@ -1,12 +1,15 @@
 package com.formation.web.controllers;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,122 +38,118 @@ public class BookController {
 	IAuthorService authorService;
 	
 
-	DateFormat formatter = new SimpleDateFormat("dd-MMM-yy");
+	/*********************** CREATE **************************************/
+	@PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
+	private Resultat addBook(@RequestBody BookDto bookDto) {
 
-	// /*********************** CREATE **************************************/
-	// @PutMapping(value="/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-	// private Resultat addBook(@RequestBody BookDto bookDto) {
-	//
-	// Resultat resultat = new Resultat();
-	// try {
-	// Book book = new Book(bookDto.getTitle(), bookDto.getDescription(),
-	// bookDto.getPrice(), bookDto.getPublicationDate(), bookDto.isPopularBook(),
-	// bookDto.getBookImage());
-	// book.setBookCategory(categoryService.getCategoryByName(bookDto..));
-	// book.setBookEditor(editorService.getById(bookDto.getBookEditorId()));
-	// List<Author> authors = new ArrayList<>();
-	// for (int i = 0; i < bookDto.getAuthorsId().size(); i++) {
-	// authors.add(authorService.getAuthor(bookDto.getAuthorsId().get(i)));
-	// }
-	// book.setAuthors(authors);
-	// bookService.insert(book);
-	//
-	// resultat.setSuccess(true);
-	// resultat.setMessage(ConstantsController.ADD_AUTHOR_SUCCESS);
-	// }catch (ServiceException se) {
-	// resultat.setSuccess(false);
-	// resultat.setMessage(se.getMessage());
-	// }catch (Exception e) {
-	// resultat.setSuccess(false);
-	// resultat.setMessage(ConstantsController.ADD_AUTHOR_ERRORS);
-	// e.printStackTrace();
-	// }
-	// return resultat;
-	// }
-	
-	/*********************** READ ALL ************************************/
-	@GetMapping(value="/getAll")
-	private Resultat getAllAuthor() {
-		
 		Resultat resultat = new Resultat();
-		List<BookDto> listBooks = new ArrayList<BookDto>();
-		
 		try {
-			List<Book> books = bookService.getAll();
+			Book book = new Book(bookDto.getTitle(), bookDto.getDescription(), bookDto.getPrice(), bookDto.getPublicationDate(), bookDto.isPopularBook(), bookDto.getBookImage());
 			
-			books.forEach(book -> {				
-				BookDto bookDto = new BookDto(book.getTitle(), book.getDescription(), book.getPrice(), book.getPublicationDate(), book.isPopularBook(),
-						book.getBookImage(), book.getBookCategory().getCategoryId(), book.getBookEditor().getEditorId());
-				List<Integer> authorIds = new ArrayList<Integer>();
-				book.getBookAuthors().forEach(author -> authorIds.add(author.getAuthorId()));
-				
-				resultat.setPayload(listBooks);
-			});
-			
+			book.setBookAuthors(authorService.getAuthorsById(bookDto.getBookAuthorsIds()));
+			book.setBookCategory(categoryService.getById(bookDto.getBookCategoryId()));
+			book.setBookEditor(editorService.getById(bookDto.getBookEditorId()));
+			bookService.insert(book);
+
 			resultat.setSuccess(true);
-			resultat.setMessage(ConstantsController.LIST_AUTHOR_SUCCESS);
-		}catch (ServiceException se) {
+			resultat.setMessage(ConstantsController.ADD_BOOK_SUCCESS);
+		} catch (ServiceException se) {
 			resultat.setSuccess(false);
 			resultat.setMessage(se.getMessage());
-		}catch (Exception e) {
+		} catch (Exception e) {
 			resultat.setSuccess(false);
-			resultat.setMessage(ConstantsController.LIST_AUTHOR_ERRORS);
+			resultat.setMessage(ConstantsController.ADD_BOOK_ERRORS);
 			e.printStackTrace();
 		}
-		return resultat;		
+		return resultat;
 	}
 
-//	/************************* READ ************************************/
-//	@GetMapping(value = "/get/{id}")
-//	private Resultat getAuteurById(@PathVariable(value = "id") int id) {
-//
-//		Resultat resultat = new Resultat();
-//		try {
-//			Author author = authorService.getById(id);
-//			AuthorDto authorById = new AuthorDto(author.getFirstname(), author.getLastname(), author.getShortBio());
-//			authorById.setId(author.getAuthorId());
-//
-//			resultat.setPayload(authorById);
-//			resultat.setSuccess(true);
-//			resultat.setMessage(ConstantsController.READ_AUTHOR_SUCCESS);
-//		} catch (ServiceException se) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(se.getMessage());
-//		} catch (Exception e) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(ConstantsController.READ_AUTHOR_ERRORS);
-//			e.printStackTrace();
-//		}
-//		return resultat;
-//	}
-//
-//	/************************* UPDATE ************************************/
-//	@PostMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
-//	private Resultat updateAuthor(@RequestBody AuthorDto authorDto, @PathVariable(value = "id") int id) {
-//
-//		Resultat resultat = new Resultat();
-//		try {
-//			Author author = authorService.getById(id);
-//			author.setFirstname(authorDto.getFirstname());
-//			author.setLastname(authorDto.getLastname());
-//			author.setShortBio(authorDto.getShortBio());
-//
-//			resultat.setSuccess(true);
-//			resultat.setMessage(ConstantsController.READ_AUTHOR_SUCCESS);
-//		} catch (ServiceException se) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(se.getMessage());
-//		} catch (Exception e) {
-//			resultat.setSuccess(false);
-//			resultat.setMessage(ConstantsController.READ_AUTHOR_ERRORS);
-//			e.printStackTrace();
-//		}
-//		return resultat;
-//	}
-//
+	/*********************** READ ALL ************************************/
+	@GetMapping(value = "/getAll")
+	private Resultat getAllBook() {
+
+		Resultat resultat = new Resultat();
+		List<BookDto> listBooks = new ArrayList<BookDto>();
+
+		try {
+			List<Book> books = bookService.getAll();
+			books.forEach(book -> {
+				BookDto bookDto = new BookDto(book.getTitle(), book.getDescription(), book.getPrice(), book.getPublicationDate(), book.isPopularBook(), book.getBookImage(), book.getBookCategory().getCategoryId(), book.getBookEditor().getEditorId());
+				bookDto.setId(book.getBookId());
+				listBooks.add(bookDto);
+				resultat.setPayload(listBooks);
+			});
+
+			resultat.setSuccess(true);
+			resultat.setMessage(ConstantsController.LIST_BOOK_SUCCESS);
+		} catch (ServiceException se) {
+			resultat.setSuccess(false);
+			resultat.setMessage(se.getMessage());
+		} catch (Exception e) {
+			resultat.setSuccess(false);
+			resultat.setMessage(ConstantsController.LIST_BOOK_ERRORS);
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+
+	/************************* READ ************************************/
+	@GetMapping(value = "/get/{id}")
+	private Resultat getBookById(@PathVariable(value = "id") int id) {
+
+		Resultat resultat = new Resultat();
+		try {
+			Book book = bookService.getById(id);
+			BookDto bookById = new BookDto(book.getTitle(), book.getDescription(), book.getPrice(), book.getPublicationDate(), book.isPopularBook(), book.getBookImage(), book.getBookCategory().getCategoryId(), book.getBookEditor().getEditorId());
+			bookById.setId(book.getBookId());
+
+			resultat.setPayload(bookById);
+			resultat.setSuccess(true);
+			resultat.setMessage(ConstantsController.READ_BOOK_SUCCESS);
+		} catch (ServiceException se) {
+			resultat.setSuccess(false);
+			resultat.setMessage(se.getMessage());
+		} catch (Exception e) {
+			resultat.setSuccess(false);
+			resultat.setMessage(ConstantsController.READ_BOOK_ERRORS);
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+	
+
+	/************************* UPDATE ************************************/
+	@PostMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+	private Resultat updateBook(@RequestBody BookDto bookDto, @PathVariable(value = "id") int id) {
+
+		Resultat resultat = new Resultat();
+		try {
+			Book book = bookService.getById(id);
+			book.setTitle(bookDto.getTitle());
+			book.setDescription(bookDto.getDescription());
+			book.setPrice(bookDto.getPrice());
+			book.setPublicationDate(bookDto.getPublicationDate());
+			//book.setPopularBook(popularBook);
+			// ...
+			
+			bookService.update(book);
+
+			resultat.setSuccess(true);
+			resultat.setMessage(ConstantsController.UPDATE_BOOK_SUCCESS);
+		} catch (ServiceException se) {
+			resultat.setSuccess(false);
+			resultat.setMessage(se.getMessage());
+		} catch (Exception e) {
+			resultat.setSuccess(false);
+			resultat.setMessage(ConstantsController.UPDATE_BOOK_ERRORS);
+			e.printStackTrace();
+		}
+		return resultat;
+	}
+
 //	/************************* DELETE ************************************/
 //	@DeleteMapping(value = "/delete/{id}")
-//	private Resultat deleteAuthor(@RequestBody AuthorDto authorDto, @PathVariable(value = "id") int id) {
+//	private Resultat deleteAuthor(@PathVariable(value = "id") int id) {
 //
 //		Resultat resultat = new Resultat();
 //		try {
@@ -168,29 +167,15 @@ public class BookController {
 //		}
 //		return resultat;
 //	}
-//}
+}
 
 	
 	
 	
 	
 	
-// @GetMapping("/get")
-// public List<BookDto> getBook() {
-// List<BookDto> viewBooks = new ArrayList<BookDto>();
-//
-// List<Book> books = bookService.getAll();
-//
-// for (Book oneBook : books) {
-// viewBooks.add(new BookDto(oneBook.getTitle(), oneBook.getDescription(),
-// oneBook.getPrice(),
-// oneBook.getPublicationDate().toString(), oneBook.isPopularBook(),
-// oneBook.getBookImage(),
-// oneBook.getBookCategory().getCategoryId(),
-// oneBook.getBookEditor().getEditorId(), null));
-// }
-// return viewBooks;
-// }
+	
+
 //
 // @PutMapping("/add")
 // public void bookAdd(@RequestBody BookDto bookDto) throws ParseException {
@@ -274,4 +259,4 @@ public class BookController {
 // });
 // return viewBooks;
 // }
-}
+

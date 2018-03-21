@@ -37,6 +37,8 @@ public class ConstantsController {
 	public static final String LIST_BOOK_ERRORS = "Une erreur est survenue lors de l'affichage des livres";
 	public static final String READ_BOOK_SUCCESS = "Informations affichées sur le livre";
 	public static final String READ_BOOK_ERRORS = "Une erreur est survenue lors de l'affichage des information de le livre";
+	public static final String UPDATE_BOOK_SUCCESS = "Mise à jour du livre";
+	public static final String UPDATE_BOOK_ERRORS = "Une erreur est survenue lors de la mise a jour du livre";
 	public static final String DELETE_BOOK_SUCCESS = "Suppression du livre";
 	public static final String DELETE_BOOK_ERRORS = "Une erreur est survenue lors de la suppression du livre";
 

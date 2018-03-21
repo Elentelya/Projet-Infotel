@@ -17,4 +17,6 @@ public interface IAuthorService {
 		Author getAuthorByName(String name) throws Exception;
 		List<Author> getAuthorsByBookTitle(String title) throws Exception;
 		
+		// Ajout
+		List<Author> getAuthorsById(List<Integer> authorsIds) throws Exception;
 }

@@ -1,6 +1,7 @@
 package com.formation.service.implementations;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,12 @@ public class AuthorServiceImpl implements IAuthorService {
 	@Override
 	public List<Author> getAuthorsByBookTitle(String title) throws Exception {
 		return authorDao.getAuthorsByTitle(title);
+	}
+
+	// code à Antoine, tester plus tard ...
+	@Override
+	public List<Author> getAuthorsById(List<Integer> authorsIds) throws Exception {
+		return getAll().stream().filter(a -> authorsIds.contains(a.getAuthorId())).collect(Collectors.toList());
 	}
 
 }

@@ -13,7 +13,7 @@
 		<artifactId>Library</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
-	
+
 	<properties>
 		<spring.version>4.3.14.RELEASE</spring.version>
 	</properties>
@@ -51,21 +51,22 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-<!-- 		<dependency> -->
-<!--             <groupId>org.springframework</groupId> -->
-<!--             <artifactId>spring-context</artifactId> -->
-<!--             <version>${spring.version}</version> -->
-<!--         </dependency> -->
+		<!-- En complement du filtre dans le web.xml -->
 		<dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.9.4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.4</version>
-        </dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>8.5.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

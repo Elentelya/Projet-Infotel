@@ -71,4 +71,8 @@ public class LibraryDto {
 		return libraryId;
 	}
 
+	public void setLibraryId(int libraryId) {
+		this.libraryId = libraryId;
+	}
+
 }	

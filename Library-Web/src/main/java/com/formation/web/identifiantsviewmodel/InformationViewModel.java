@@ -6,9 +6,7 @@ public class InformationViewModel {
 	private String email;
 	private String password;
 	
-	public InformationViewModel() {
-		
-	}
+	public InformationViewModel() {	}
 	
 	public String getEmail() {
 		return email;

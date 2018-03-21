@@ -5,6 +5,7 @@ import java.util.List;
 
 public class BookDto {
 
+	private int id;
 	private String title;
 	private String description;
 	private double price;
@@ -30,6 +31,17 @@ public class BookDto {
 		this.bookCategoryId = bookCategoryId;
 		this.bookEditorId = bookEditorId;
 	}
+
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public int getBookCategoryId() {
 		return bookCategoryId;

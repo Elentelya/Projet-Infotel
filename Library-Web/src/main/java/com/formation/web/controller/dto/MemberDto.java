@@ -11,14 +11,26 @@ public class MemberDto {
 	private String email;
 	private String password;
 	private String phone;
+	private String address;
 	private boolean admin;
 	private boolean active;
 	private List<Integer> memberBasketIds;
-	private int memberAddressId;
 	private List<Integer> memberRegistrationIds;
 
+	
+	
+	public MemberDto(String firstname, String lastname, String email, String phone, String address, boolean admin) {
+		super();
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+		this.admin = admin;
+	}
+
 	public MemberDto(String firstname, String lastname, String email, String password, String phone, boolean admin,
-			boolean active, List<Integer> memberBasketIds, int memberAddressId, List<Integer> memberRegistrationIds) {
+			boolean active, List<Integer> memberBasketIds, String address, List<Integer> memberRegistrationIds) {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -28,7 +40,7 @@ public class MemberDto {
 		this.admin = admin;
 		this.active = active;
 		this.memberBasketIds = memberBasketIds;
-		this.memberAddressId = memberAddressId;
+		this.address = address;
 		this.memberRegistrationIds = memberRegistrationIds;
 	}
 
@@ -101,12 +113,12 @@ public class MemberDto {
 		this.memberBasketIds = memberBasketIds;
 	}
 
-	public int getMemberAddressId() {
-		return memberAddressId;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setMemberAddressId(int memberAddressId) {
-		this.memberAddressId = memberAddressId;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public List<Integer> getMemberRegistrationIds() {
@@ -120,5 +132,11 @@ public class MemberDto {
 	public int getMemberId() {
 		return memberId;
 	}
+
+	public void setMemberId(int memberId) {
+		this.memberId = memberId;
+	}
+	
+	
 
 }

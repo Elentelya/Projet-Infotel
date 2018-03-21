@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.formation.dao.entities.Member;
 import com.formation.service.exceptions.ServiceException;
 import com.formation.service.interfaces.IMemberService;
+import com.formation.web.controller.dto.MemberDto;
 import com.formation.web.identifiantsviewmodel.InformationViewModel;
 
 @RestController
@@ -21,8 +23,11 @@ public class LoginController {
 		
 		Resultat resultat = new Resultat();
 		try {
-			memberService.login(identifiants.getEmail(), identifiants.getPassword());
-			
+			Member member = memberService.login(identifiants.getEmail(), identifiants.getPassword());
+			MemberDto memberDto = new MemberDto(member.getFirstname(), member.getLastname(), member.getEmail(), member.getPhone(), member.getAddress(), member.isAdmin());
+			memberDto.setMemberId(member.getMemberId());
+			memberDto.setActive(member.isActive());
+			resultat.setPayload(memberDto);
 			resultat.setSuccess(true);
 			resultat.setMessage(ConstantsController.LOGIN_SUCCESS);
 		} catch (ServiceException se) {
