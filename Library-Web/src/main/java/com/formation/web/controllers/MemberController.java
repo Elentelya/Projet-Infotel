@@ -33,11 +33,20 @@ public class MemberController {
 		Resultat resultat = new Resultat();
 		try {
 			Member member = new Member(memberrDto.getFirstname(), memberrDto.getLastname(), memberrDto.getEmail(), memberrDto.getPassword(), memberrDto.getPhone(), memberrDto.getAddress(), memberrDto.isAdmin(), memberrDto.isActive());
-			memberService.insert(member);
-
-			resultat.setPayload(member); //
-			resultat.setSuccess(true);
-			resultat.setMessage(ConstantsController.ADD_MEMBER_SUCCESS);
+			boolean newMember = memberService.isEmailExist(member.getEmail());
+			System.out.println("test : " + newMember);
+			if(newMember) {
+				memberService.insert(member);			
+				resultat.setPayload(member); //
+				resultat.setSuccess(true);
+				resultat.setMessage(ConstantsController.ADD_MEMBER_SUCCESS);
+			}
+			else {
+				String message = "Adresse email deja existante";
+				resultat.setSuccess(false);
+				resultat.setMessage(ConstantsController.ADD_MEMBER_ALREADY_EXIST);
+				resultat.setPayload(message);
+			}
 		} catch (ServiceException se) {
 			resultat.setSuccess(false);
 			resultat.setMessage(se.getMessage());

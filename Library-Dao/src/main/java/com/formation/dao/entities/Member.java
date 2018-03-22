@@ -23,6 +23,7 @@ public class Member implements java.io.Serializable {
 
 	private String firstname;
 	private String lastname;
+	@Column(unique=true)
 	private String email;
 	private String password;
 	private String phone;

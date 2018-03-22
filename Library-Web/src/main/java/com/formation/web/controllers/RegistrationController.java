@@ -1,33 +1,48 @@
-package com.formation.web.controllers;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-@RequestMapping("/registration")
-public class RegistrationController {
-
+//package com.formation.web.controllers;
+//
+//import java.util.ArrayList;
+//
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.http.MediaType;
+//import org.springframework.web.bind.annotation.DeleteMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.web.bind.annotation.PostMapping;
+//import org.springframework.web.bind.annotation.PutMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.RequestMapping;
+//import org.springframework.web.bind.annotation.RestController;
+//
+//import com.formation.dao.entities.Registration;
+//import com.formation.service.interfaces.IRegistrationService;
+//import com.formation.web.controller.dto.MemberDto;
+//import com.formation.web.controller.dto.RegistrationDto;
+//
+//@RestController
+//@RequestMapping("/registration")
+//public class RegistrationController {
+//
 //	@Autowired
-//	IMemberService memberService;
+//	IRegistrationService registrationService;
 //
 //	/*********************** CREATE **************************************/
 //	@PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
-//	private Resultat addMember(@RequestBody MemberDto memberrDto) {
+//	private Resultat putRegistration(@RequestBody RegistrationDto registrationDto) {
 //
 //		Resultat resultat = new Resultat();
 //		try {
-//			Member member = new Member(memberrDto.getFirstname(), memberrDto.getLastname(), memberrDto.getEmail(), memberrDto.getPassword(), memberrDto.getPhone(), memberrDto.getAddress(), memberrDto.isAdmin(), memberrDto.isActive());
-//			memberService.insert(member);
+//			Registration registration = new Registration(registrationDto.getRegistrationDate(), registrationDto.getRegistrationLibraryId(), registrationDto.getRegistrationMemberId());
+//			registrationService.insert(registration);
 //
-//			resultat.setPayload(member); //
+//			resultat.setPayload(registration); //
 //			resultat.setSuccess(true);
-//			resultat.setMessage(ConstantsController.ADD_MEMBER_SUCCESS);
+//			resultat.setMessage(ConstantsController.ADD_REGISTRATION_SUCCESS);
 //		} catch (ServiceException se) {
 //			resultat.setSuccess(false);
 //			resultat.setMessage(se.getMessage());
 //		} catch (Exception e) {
 //			resultat.setSuccess(false);
-//			resultat.setMessage(ConstantsController.ADD_MEMBER_ERRORS);
+//			resultat.setMessage(ConstantsController.ADD_REGISTRATION_ERRORS);
 //			e.printStackTrace();
 //		}
 //		return resultat;
@@ -139,4 +154,4 @@ public class RegistrationController {
 //		}
 //		return resultat;
 //	}
-}
+//}

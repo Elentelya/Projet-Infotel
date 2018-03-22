@@ -14,10 +14,10 @@ public interface IMemberService {
 	void delete(Member member) throws Exception;
 	
 	// IMemberDao
-	Member getMemberByEmail(String email) throws Exception;
-	boolean isUserExist(String email, String password) throws Exception;
+	boolean isEmailExist(String email) throws Exception;
 	
-	// Login Test
+	// Autres
+	String passwordEncoding(String password) throws Exception;
 	Member login(String email,String password) throws Exception;
 
 }

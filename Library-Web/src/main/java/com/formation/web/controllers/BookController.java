@@ -119,6 +119,35 @@ public class BookController {
 		return resultat;
 	}
 	
+	/*********************** READ POPULAR ************************************/
+    @GetMapping(value = "/getPopular")
+    private Resultat getPopularBook() {
+
+        Resultat resultat = new Resultat();
+        List<BookDto> listBooks = new ArrayList<BookDto>();
+
+        try {
+            List<Book> books = bookService.popular();
+            books.forEach(book -> {
+                BookDto bookDto = new BookDto(book.getTitle(), book.getDescription(), book.getPrice(), book.getPublicationDate(), book.isPopularBook(), book.getBookImage(), book.getBookCategory().getCategoryId(), book.getBookEditor().getEditorId());
+                bookDto.setId(book.getBookId());
+                listBooks.add(bookDto);
+                resultat.setPayload(listBooks);
+            });
+
+            resultat.setSuccess(true);
+            resultat.setMessage(ConstantsController.LIST_BOOK_SUCCESS);
+        } catch (ServiceException se) {
+            resultat.setSuccess(false);
+            resultat.setMessage(se.getMessage());
+        } catch (Exception e) {
+            resultat.setSuccess(false);
+            resultat.setMessage(ConstantsController.LIST_BOOK_ERRORS);
+            e.printStackTrace();
+        }
+        return resultat;
+    }
+	
 
 	/************************* UPDATE ************************************/
 	@PostMapping(value = "/update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)

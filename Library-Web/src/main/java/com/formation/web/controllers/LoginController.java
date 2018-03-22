@@ -1,8 +1,8 @@
 package com.formation.web.controllers;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,10 +32,10 @@ public class LoginController {
 			memberDto.setMemberId(member.getMemberId());
 			memberDto.setActive(member.isActive());
 
-			HttpSession session = req.getSession();
-			session.setAttribute("SessionUser", member);
-			if(member.isAdmin()) session.setAttribute("access", "admin");
-			else session.setAttribute("access", "user");
+//			HttpSession session = req.getSession();
+//			session.setAttribute("SessionUser", member);
+//			if(member.isAdmin()) session.setAttribute("access", "admin");
+//			else session.setAttribute("access", "user");
 			
 			resultat.setPayload(memberDto);
 			resultat.setSuccess(true);

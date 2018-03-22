@@ -1,5 +1,7 @@
 package com.formation.service.implementations;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.hibernate.service.spi.ServiceException;
@@ -48,19 +50,35 @@ public class MemberServiceImpl implements IMemberService {
     }
     
 
-    @Override
-    public Member getMemberByEmail(String email) throws Exception {
-        return memberDao.getMemberByEmail(email);
-    }
+	@Override
+	public boolean isEmailExist(String email) throws Exception {
+		 List<Member> members = memberDao.getListMemberByEmail(email);
+		 if (members.isEmpty()) return true;
+		 else return false;
+	}
 
-    @Override
-    public boolean isUserExist(String login, String password) throws Exception {
-        return memberDao.isUserExist(login, password);
-    }
-    
+	@Override
+	public String passwordEncoding(String password) throws Exception {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+	        byte[] passBytes = password.getBytes();
+	        md.reset();
+	        byte[] digested = md.digest(passBytes);
+	        StringBuffer sb = new StringBuffer();
+	        for(int i=0;i<digested.length;i++){
+	            sb.append(Integer.toHexString(0xff & digested[i]));
+	        }
+	        return sb.toString();
+	    } catch (NoSuchAlgorithmException ex) {
+	       // Logger.getLogger(CryptWithMD5.class.getName()).log(Level.SEVERE, null, ex);
+	    	 System.out.println(ex);
+	    }
+		return null;
+	} 
+	
     @Override
 	public Member login(String email, String password) throws Exception {
-		if (!memberDao.isUserExist(email, password))
+		if (!memberDao.isUserExist(email, password))//passwordEncoding(password)))
 			throw new ServiceException(ErrorConstants.ACCCOUNT_NOT_EXISTING);
 		else
 			return memberDao.getMemberByEmail(email);
