@@ -34,7 +34,9 @@ public class MemberController {
 		try {
 			Member member = new Member(memberrDto.getFirstname(), memberrDto.getLastname(), memberrDto.getEmail(), memberrDto.getPassword(), memberrDto.getPhone(), memberrDto.getAddress(), memberrDto.isAdmin(), memberrDto.isActive());
 			boolean newMember = memberService.isEmailExist(member.getEmail());
-			System.out.println("test : " + newMember);
+			
+			member.setPassword(memberService.passwordEncoding(member.getPassword()));
+			
 			if(newMember) {
 				memberService.insert(member);			
 				resultat.setPayload(member); //

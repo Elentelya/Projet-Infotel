@@ -87,23 +87,23 @@ public class Main {
 		libraries.add(library3);
 
 		/***************** AJOUT DE MEMBRES ******************/
-		Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "1234", "0631589658", "12 rue des coquelicots - 19450 BidonVille", false, true);
+		Member membre1 = new Member("Lucas", "Morachini", "adresse@mail.com", "81dc9bdb52d04dc2036dbd8313ed055", "0631589658", "12 rue des coquelicots - 19450 BidonVille", false, true);
 		Date dateregMembre1 = new Date(2012, 07, 02);
 		Registration regMembre1 = new Registration(dateregMembre1, library3, membre1);
 
-		Member membre2 = new Member("Jerry", "Slitheen", "jerryslitheen@mail.com", "1234", "156894563789", "6 allé des peupliers - 29200 Brest", false, true);
+		Member membre2 = new Member("Jerry", "Slitheen", "jerryslitheen@mail.com", "81dc9bdb52d04dc2036dbd8313ed055", "156894563789", "6 allé des peupliers - 29200 Brest", false, true);
 		Date dateregMembre2 = new Date(2015, 04, 20);
 		Registration regMembre2 = new Registration(dateregMembre2, library1, membre2);
 
-		Member membre3 = new Member("Maitre", "", "haroldsaxon@mail.com", "1234", "8596467315", "143 rue du yop au chocolat - 44000 Nantes", true, true);
+		Member membre3 = new Member("Maitre", "", "haroldsaxon@mail.com", "81dc9bdb52d04dc2036dbd8313ed055", "8596467315", "143 rue du yop au chocolat - 44000 Nantes", true, true);
 		Date dateregMembre3 = new Date(2011, 11, 10);
 		Registration regMembre3 = new Registration(dateregMembre3, library2, membre3);
 
-		Member membre4 = new Member("Doctor", "Who", "tardis@mail.com", "1234", "9632154878", "17 impasse du ciel bleu - 29200 Brest", true, true);
+		Member membre4 = new Member("Doctor", "Who", "tardis@mail.com", "81dc9bdb52d04dc2036dbd8313ed055", "9632154878", "17 impasse du ciel bleu - 29200 Brest", true, true);
 		Date dateregMembre4 = new Date(2009, 02, 16);
 		Registration regMembre4 = new Registration(dateregMembre4, library1, membre4);
 
-		Member membre5 = new Member("Tyler", "Rose", "roseTyler@mail.com", "1234", "7596472315", "36 rue de la soif - 35000 Rennes", false, true);
+		Member membre5 = new Member("Tyler", "Rose", "roseTyler@mail.com", "81dc9bdb52d04dc2036dbd8313ed055", "7596472315", "36 rue de la soif - 35000 Rennes", false, true);
 		Date dateregMembre5 = new Date(2013, 05, 17);
 		Registration regMembre5 = new Registration(dateregMembre5, library1, membre5);
 		
@@ -116,7 +116,7 @@ public class Main {
 		/***************** AJOUT DE LIVRES ******************/
 		Date datebook1 = new Date(2003,06,26);
 		Book book1 = new Book("Eragon", "Eragon est le premier roman du cycle L'Heritage.", 20, datebook1,
-				"Eragon.jpg", true, cat2, edit1, authors2);
+				"Eragon.jpg", false, cat2, edit1, authors2);
 
 		Date datebook2 = new Date(2012,10,2);
 		Book book2 = new Book("Troisième Humanité",
@@ -126,11 +126,11 @@ public class Main {
 		Date datebook3 = new Date(1999,1,1);
 		Book book3 = new Book("Stupeur et Tremblements",
 				"Amélie, originaire de Belgique qui a vécu sa petite enfance au Japon, a toujours admiré le raffinement et l’art de vivre du pays.",
-				10, datebook3, "StupTremb.jpg", true, cat5, edit2, authors3);
+				10, datebook3, "StupTremb.jpg", false, cat5, edit2, authors3);
 
 		Date datebook4 = new Date(2001,11,12);
 		Book book4 = new Book("Ou es_tu?", "Philip et Susan ont toujours compté l'un sur l'autre.", 10, datebook4,
-				"OuEsTu.jpg", true, cat4, edit3, authors4);
+				"OuEsTu.jpg", false, cat4, edit3, authors4);
 
 		Date datebook5 = new Date(2006,1,1);
 		Book book5 = new Book("Les Arcanes du Chaos",

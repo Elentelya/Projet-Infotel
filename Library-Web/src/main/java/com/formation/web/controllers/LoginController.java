@@ -32,10 +32,10 @@ public class LoginController {
 			memberDto.setMemberId(member.getMemberId());
 			memberDto.setActive(member.isActive());
 
-//			HttpSession session = req.getSession();
-//			session.setAttribute("SessionUser", member);
-//			if(member.isAdmin()) session.setAttribute("access", "admin");
-//			else session.setAttribute("access", "user");
+			HttpSession session = req.getSession();
+			session.setAttribute("UserSession", member);
+			if(member.isAdmin()) session.setAttribute("access", "admin");
+			else session.setAttribute("access", "user");
 			
 			resultat.setPayload(memberDto);
 			resultat.setSuccess(true);
@@ -54,6 +54,7 @@ public class LoginController {
 	
 	@PostMapping(value="/logout", consumes=  MediaType.APPLICATION_JSON_VALUE) 
 	private Resultat logout(HttpServletRequest req) {
+		
 		HttpSession session = req.getSession();
 		session.invalidate();
 		

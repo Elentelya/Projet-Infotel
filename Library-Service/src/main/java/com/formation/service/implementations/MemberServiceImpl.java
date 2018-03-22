@@ -78,7 +78,7 @@ public class MemberServiceImpl implements IMemberService {
 	
     @Override
 	public Member login(String email, String password) throws Exception {
-		if (!memberDao.isUserExist(email, password))//passwordEncoding(password)))
+		if (!memberDao.isUserExist(email, passwordEncoding(password))) //password
 			throw new ServiceException(ErrorConstants.ACCCOUNT_NOT_EXISTING);
 		else
 			return memberDao.getMemberByEmail(email);
