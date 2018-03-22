@@ -1,5 +1,8 @@
 package com.formation.web.controllers;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +22,7 @@ public class LoginController {
 	IMemberService memberService;
 
 	@PostMapping(value="/login", consumes=  MediaType.APPLICATION_JSON_VALUE)
-	private Resultat connexionMembre(@RequestBody InformationViewModel identifiants) {
+	private Resultat login(@RequestBody InformationViewModel identifiants, HttpServletRequest req) {
 		
 		Resultat resultat = new Resultat();
 		
@@ -28,6 +31,11 @@ public class LoginController {
 			MemberDto memberDto = new MemberDto(member.getFirstname(), member.getLastname(), member.getEmail(), member.getPhone(), member.getAddress(), member.isAdmin());
 			memberDto.setMemberId(member.getMemberId());
 			memberDto.setActive(member.isActive());
+
+			HttpSession session = req.getSession();
+			session.setAttribute("SessionUser", member);
+			if(member.isAdmin()) session.setAttribute("access", "admin");
+			else session.setAttribute("access", "user");
 			
 			resultat.setPayload(memberDto);
 			resultat.setSuccess(true);
@@ -41,6 +49,19 @@ public class LoginController {
 
 			e.printStackTrace();
 		}
+		return resultat;
+	}
+	
+	@PostMapping(value="/logout", consumes=  MediaType.APPLICATION_JSON_VALUE) 
+	private Resultat logout(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.invalidate();
+		
+		Resultat resultat = new Resultat();
+		String message = "logout";
+		resultat.setPayload(message);
+		resultat.setSuccess(true);
+		resultat.setMessage(ConstantsController.LOGOUT_SUCCESS);
 		return resultat;
 	}
 }

@@ -65,6 +65,7 @@ public class ConstantsController {
 	// Messages pour Login
 	public static final String LOGIN_SUCCESS = "Connexion reussie";
 	public static final String LOGIN_ERRORS = "Une erreur est survenue lors de la connexion";
+	public static final String LOGOUT_SUCCESS = "Deconnexion reussie";
 
 	// Messages pour Membre
 	public static final String ADD_MEMBER_SUCCESS = "Nouveau membre ajouté";
