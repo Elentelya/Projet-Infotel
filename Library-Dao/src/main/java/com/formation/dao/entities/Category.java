@@ -15,9 +15,6 @@ public class Category implements java.io.Serializable {
 	private String name;
 	private String description;
 
-	@OneToMany(mappedBy = "bookCategory")
-	private List<Book> categoryBooks;
-
 	public Category(String name, String description) {
 		super();
 		this.name = name;
@@ -43,14 +40,6 @@ public class Category implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<Book> getCategoryBooks() {
-		return categoryBooks;
-	}
-
-	public void setCategoryBooks(List<Book> categoryBooks) {
-		this.categoryBooks = categoryBooks;
 	}
 
 	public int getCategoryId() {

@@ -19,5 +19,6 @@ public interface IMemberService {
 	// Autres
 	String passwordEncoding(String password) throws Exception;
 	Member login(String email,String password) throws Exception;
+	boolean validEmail(String email) throws Exception;
 
 }

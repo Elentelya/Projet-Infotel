@@ -53,6 +53,12 @@ public class Book implements java.io.Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+	public Book(int bookId) {
+		super();
+		this.bookId = bookId;
+	}
 
 	public Book(String title, String description, double price, Date publicationDate, boolean popularBook,
 			String bookImage) {

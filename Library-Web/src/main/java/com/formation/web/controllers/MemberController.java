@@ -29,35 +29,49 @@ public class MemberController {
 	/*********************** CREATE **************************************/
 	@PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
 	private Resultat addMember(@RequestBody MemberDto memberrDto) {
+	Resultat resultat = new Resultat();
+	try {
+	Member member = new Member(memberrDto.getFirstname(),
+	memberrDto.getLastname(), memberrDto.getEmail(), memberrDto.getPassword(),
+	memberrDto.getPhone(), memberrDto.getAddress(), memberrDto.isAdmin(), memberrDto.isActive());
+	boolean newMember = memberService.isEmailExist(member.getEmail());
+	boolean validEmail = memberService.validEmail(member.getEmail());
 
-		Resultat resultat = new Resultat();
-		try {
-			Member member = new Member(memberrDto.getFirstname(), memberrDto.getLastname(), memberrDto.getEmail(), memberrDto.getPassword(), memberrDto.getPhone(), memberrDto.getAddress(), memberrDto.isAdmin(), memberrDto.isActive());
-			boolean newMember = memberService.isEmailExist(member.getEmail());
-			
-			member.setPassword(memberService.passwordEncoding(member.getPassword()));
-			
-			if(newMember) {
-				memberService.insert(member);			
-				resultat.setPayload(member); //
-				resultat.setSuccess(true);
-				resultat.setMessage(ConstantsController.ADD_MEMBER_SUCCESS);
-			}
-			else {
-				String message = "Adresse email deja existante";
-				resultat.setSuccess(false);
-				resultat.setMessage(ConstantsController.ADD_MEMBER_ALREADY_EXIST);
-				resultat.setPayload(message);
-			}
-		} catch (ServiceException se) {
-			resultat.setSuccess(false);
-			resultat.setMessage(se.getMessage());
-		} catch (Exception e) {
-			resultat.setSuccess(false);
-			resultat.setMessage(ConstantsController.ADD_MEMBER_ERRORS);
-			e.printStackTrace();
-		}
-		return resultat;
+
+	member.setPassword(memberService.passwordEncoding(member.getPassword()));
+
+	System.out.println(newMember + " " + validEmail);
+	if(newMember == true && validEmail == true) {
+	memberService.insert(member);
+	resultat.setPayload(member); //
+	resultat.setSuccess(true);
+
+	resultat.setMessage(ConstantsController.ADD_MEMBER_SUCCESS);
+	}
+	else if(newMember == false) {
+	String message = "Adresse email deja existante";
+	resultat.setSuccess(false);
+
+
+	resultat.setMessage(ConstantsController.ADD_MEMBER_ALREADY_EXIST);
+	resultat.setPayload(message);
+	}
+	else if(validEmail == false) {
+	String message = "Email incorrect";
+	resultat.setSuccess(false);
+
+	resultat.setMessage(ConstantsController.ADD_MEMBER_EMAIL_FALSE);
+	resultat.setPayload(message);
+	}
+	} catch (ServiceException se) {
+	resultat.setSuccess(false);
+	resultat.setMessage(se.getMessage());
+	} catch (Exception e) {
+	resultat.setSuccess(false);
+	resultat.setMessage(ConstantsController.ADD_MEMBER_ERRORS);
+	e.printStackTrace();
+	}
+	return resultat;
 	}
 
 	/*********************** READ ALL ************************************/

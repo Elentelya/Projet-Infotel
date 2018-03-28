@@ -18,8 +18,8 @@ public class Author implements Serializable {
 	private String lastname;
 	private String shortBio;
 
-	@ManyToMany(mappedBy = "bookAuthors")
-	private List<Book> authorBooks = new ArrayList<Book>();
+//	@ManyToMany(mappedBy = "bookAuthors")
+//	private List<Book> authorBooks = new ArrayList<Book>();
 
 	public Author(String firstname, String lastname, String shortBio) {
 		super();
@@ -32,13 +32,13 @@ public class Author implements Serializable {
 
 	}
 
-	public List<Book> getAuthorBooks() {
-		return authorBooks;
-	}
-
-	public void setAuthorBooks(List<Book> authorBooks) {
-		this.authorBooks = authorBooks;
-	}
+//	public List<Book> getAuthorBooks() {
+//		return authorBooks;
+//	}
+//
+//	public void setAuthorBooks(List<Book> authorBooks) {
+//		this.authorBooks = authorBooks;
+//	}
 
 	public String getFirstname() {
 		return firstname;

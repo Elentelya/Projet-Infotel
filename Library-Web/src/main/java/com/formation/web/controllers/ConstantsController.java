@@ -79,5 +79,6 @@ public class ConstantsController {
 	public static final String DELETE_MEMBER_SUCCESS = "Suppression du membre";
 	public static final String DELETE_MEMBER_ERRORS = "Une erreur est survenue lors de la suppression du membre";
 	public static final String ADD_MEMBER_ALREADY_EXIST = "Cette addresse email est déjà utilisée";
+	public static final String ADD_MEMBER_EMAIL_FALSE = "Cette addresse email est incorrecte";
 	
 }

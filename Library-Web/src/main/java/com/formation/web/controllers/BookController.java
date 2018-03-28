@@ -3,6 +3,10 @@ package com.formation.web.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.formation.dao.entities.Book;
+import com.formation.dao.implementations.BookDaoES;
 import com.formation.service.exceptions.ServiceException;
 import com.formation.service.interfaces.IAuthorService;
 import com.formation.service.interfaces.IBookService;
@@ -26,6 +31,8 @@ import com.formation.web.controller.dto.BookDto;
 @RequestMapping("/book")
 public class BookController {
 
+	private final static Logger log = LogManager.getLogger(BookController.class);
+	
 	@Autowired
 	IBookService bookService;
 
@@ -38,6 +45,10 @@ public class BookController {
 	@Autowired
 	IAuthorService authorService;
 	
+	@PostConstruct
+	public void init() {
+		log.debug("initialisation du controller book");
+	}
 
 	/*********************** CREATE **************************************/
 	@PutMapping(value = "/add", consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -181,6 +192,73 @@ public class BookController {
 		return resultat;
 	}
 
+//	/*********************** SEARCH BY TITLE  ************************************/
+//    @GetMapping(value = "/search/{title}")
+//    public Resultat search(@PathVariable(value = "title") String title) {
+//
+//        Resultat resultat = new Resultat();
+//        List<BookDto> listBooks = new ArrayList<BookDto>();
+//
+//        try {
+//            List<Book> books = bookService.search(title);
+//            books.forEach(book -> {
+//                BookDto bookDto = new BookDto();
+//                bookDto.setTitle(book.getTitle());
+//                bookDto.setDescription(book.getDescription());
+//                bookDto.setBookImage(book.getBookImage());
+//                //BookDto bookDto = new BookDto(book.getTitle(), book.getDescription(), book.getPrice(), book.getPublicationDate(), book.isPopularBook(), book.getBookImage(), book.getBookCategory().getCategoryId(), book.getBookEditor().getEditorId());
+//                bookDto.setId(book.getBookId());
+//                listBooks.add(bookDto);
+//                resultat.setPayload(listBooks);
+//            });
+//
+//            resultat.setSuccess(true);
+//            resultat.setMessage(ConstantsController.LIST_BOOK_SUCCESS);
+//        } catch (ServiceException se) {
+//            resultat.setSuccess(false);
+//            resultat.setMessage(se.getMessage());
+//        } catch (Exception e) {
+//            resultat.setSuccess(false);
+//            resultat.setMessage(ConstantsController.LIST_BOOK_ERRORS);
+//            e.printStackTrace();
+//        }
+//        return resultat;
+//    }
+    
+	/*********************** SEARCH BY TITLE  ************************************/
+    @PostMapping(value = "/search", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Resultat search(@RequestBody BookDto bookDto) {
+
+        Resultat resultat = new Resultat();
+        List<BookDto> listBooks = new ArrayList<BookDto>();
+        String title = bookDto.getTitle();
+
+        try {
+            List<Book> books = bookService.search(title);
+            books.forEach(book -> {
+                BookDto bookSearch = new BookDto();
+                bookSearch.setTitle(book.getTitle());
+                bookSearch.setDescription(book.getDescription());
+                bookSearch.setBookImage(book.getBookImage());
+                //BookDto bookDto = new BookDto(book.getTitle(), book.getDescription(), book.getPrice(), book.getPublicationDate(), book.isPopularBook(), book.getBookImage(), book.getBookCategory().getCategoryId(), book.getBookEditor().getEditorId());
+                bookSearch.setId(book.getBookId());
+                listBooks.add(bookSearch);
+                resultat.setPayload(listBooks);
+            });
+
+            resultat.setSuccess(true);
+            resultat.setMessage(ConstantsController.LIST_BOOK_SUCCESS);
+        } catch (ServiceException se) {
+            resultat.setSuccess(false);
+            resultat.setMessage(se.getMessage());
+        } catch (Exception e) {
+            resultat.setSuccess(false);
+            resultat.setMessage(ConstantsController.LIST_BOOK_ERRORS);
+            e.printStackTrace();
+        }
+        return resultat;
+    }
+    
 	/************************* DELETE ************************************/
 	@DeleteMapping(value = "/delete/{id}")
 	private Resultat deleteBook(@PathVariable(value = "id") int id) {
